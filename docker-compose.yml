@@ -1,23 +1,37 @@
+# Версия docker-compose
 version: '2'
-
+# Список наших сервисов (контейнеров)
 services:
-  db:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: 123321
-      MYSQL_DATABASE: test_db
-      MYSQL_USER: dev
-      MYSQL_PASSWORD: 123321
-    ports:
-      - "9906:3306"
-# web:
-#   image: php:7.2.2-apache
-#   container_name: php_web
-#   depends_on:
-#     - db
-#   volumes:
-#      - ./code/:/var/www/html/
-#    ports:
-#      - "8100:80"
-#    stdin_open: true
-#    tty: true
+    nginx:
+    	# используем последний стабильный образ nginx
+        image: nginx:latest
+        # маршрутизируем порты
+        ports:
+            - "80:80"
+            - "443:443"
+        # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
+        volumes:
+            - ./hosts:/etc/nginx/conf.d
+            - ./www:/var/www
+            - ./logs:/var/log/nginx
+        # nginx должен общаться с php контейнером
+        links:
+            - php
+    php:
+        # у нас свой образ для PHP, указываем путь к нему и говорим что его надо собрать
+        build: ./images/php
+        # этот образ будет общаться с mysql
+        links:
+            - mysql
+        # монтируем директорию с проектами
+        volumes:
+            - ./www:/var/www
+    mysql:
+        image: mysql:8
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./mysql:/var/lib/mysql
+        # задаем пароль для root пользователя
+        environment:
+            MYSQL_ROOT_PASSWORD: Kewpdvmyu9x
