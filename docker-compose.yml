@@ -2,12 +2,12 @@ version: '2'
 
 services:
   db:
-    image: mysql:5.7
+    image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: dev2
+      MYSQL_ROOT_PASSWORD: 123321
       MYSQL_DATABASE: test_db
       MYSQL_USER: dev
-      MYSQL_PASSWORD: dev1
+      MYSQL_PASSWORD: 123321
     ports:
       - "9906:3306"
 # web:
