@@ -1,0 +1,2 @@
+172.18.0.1 - - [12/Jun/2018:20:30:18 +0000] "GET / HTTP/1.1" 200 90025 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36"
+172.18.0.1 - - [12/Jun/2018:20:30:18 +0000] "GET /favicon.ico HTTP/1.1" 404 571 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36"
