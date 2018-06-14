@@ -13,8 +13,17 @@
   echo  "Умножение из $x и $y = $mult <br>";
   echo  "Деление из $x и $y = $delenie <br>";
 
-# Lesson 6
+  $z = 20;
+  $y = 7;
+  $ostatok = $z % $y;
+  echo "Вывел остаток при делении $ostatok";
+  echo "<br>";
+  $q = 400;
+  $q += 10;
+  echo "$q";
 
+# Lesson 6
+  echo "<br>";
   define("PI", 3.14);
   echo "<br>";
   echo PI;
