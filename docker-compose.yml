@@ -34,5 +34,7 @@ services:
             - ./mysql:/var/lib/mysql
         # задаем пароль для root пользователя
         environment:
-            MYSQL_ROOT_PASSWORD: Kewpdvmyu9x
+            MYSQL_ROOT_PASSWORD: dev
+            MYSQL_ROOT_USER: dev
+            MYSQL_ROOT_DATABASE: dev
 
