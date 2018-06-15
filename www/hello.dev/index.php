@@ -2,12 +2,14 @@
 
 # Lesson 8
 
-  $str_1 = "Первая строка";
+  $str_1 = "Первая строка <input type=\"text\" >";
   $str_2 = "Вторая строка";
-  echo $str_1." ".$str_2;
+  echo $str_1." ".$str_2." \" \\";
+  echo "<br>";
+  echo '"';
 
 # Lesson 7
-
+/*
   echo "<br><br>";
   $x = 32;
   $y = 22.13;
@@ -70,5 +72,5 @@
   }
   else
 	echo "Не верно";
-
+*/
 ?>
