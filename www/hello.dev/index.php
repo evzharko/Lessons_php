@@ -1,7 +1,14 @@
 <?
 
+# Lesson 8
+
+  $str_1 = "Первая строка";
+  $str_2 = "Вторая строка";
+  echo $str_1." ".$str_2;
+
 # Lesson 7
 
+  echo "<br><br>";
   $x = 32;
   $y = 22.13;
   $summ = $x + $y;
@@ -19,8 +26,11 @@
   echo "Вывел остаток при делении $ostatok";
   echo "<br>";
   $q = 400;
+  echo "$q <br>";
   $q += 10;
-  echo "$q";
+  echo "Прибавили еще 10 = $q <br>";
+  $q++;
+  echo "Прибивили +1 = $q <br>";
 
 # Lesson 6
   echo "<br>";
