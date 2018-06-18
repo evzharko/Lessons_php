@@ -1,11 +1,40 @@
 <?
 
+# new lessons https://www.youtube.com/watch?v=a6xtQQqx1tg&t=4702s
+
+  $masiv = array(1,2,3,4,5);
+  echo $masiv[2];
+  echo "<br>";
+  $f = array(
+      'name' => 'Abraham',
+      'surname' => 'Zharko',
+      'age' => 20,
+      'byear' => 1996,
+      'education' => array(
+          'school in 2003',
+          'colleg in 2013'
+      ) // многомерный массив
+  );
+  echo $f['education'][0];
+  echo "<br /><br />";
+  echo $masiv[0];
+  echo "<br /><br />";
+
+  $j = false;
+  //echo ();
+
+  echo "<br /><br />";
+  $my_varable = 100;
+  echo $my_varable;
+
+
 # Lesson 8
 
+  echo "<br /><br />";
   $str_1 = "Первая строка <input type=\"text\" >";
   $str_2 = "Вторая строка";
   echo $str_1." ".$str_2." \" \\";
-  echo "<br>";
+  echo "<br />";
   echo '"';
 
 # Lesson 7
