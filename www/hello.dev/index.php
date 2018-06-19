@@ -23,7 +23,42 @@
   echo $masiv[0];
   echo "<br /><br />";
 
-  $j = false;
+  echo "Изучаю function <br />";
+  function test_f($sum1, $sum2){
+    $sumall = $sum1 + $sum2;
+    return $sumall;
+  };
+  echo test_f(1,2);
+  //var_dump(test_f(1,2));
+
+  echo "<br /><br />";
+  echo "Изучаю switch <br />";
+  $var_switch = "apple";
+  switch ($var_switch){
+      case "apple":
+          echo "Вывели apple";
+          break;
+      case "other":
+          echo "Ничего не выводим";
+          break;
+      default;
+            echo "Ничго не подошло";
+            break;
+  }
+
+  echo "<br /><br />";
+  echo "Изучаю switch + function <br />";
+
+  switch (test_f(1,1)){
+      case 1:
+        echo "Сумма 1 + 1 = не подходит";
+        break;
+      case 2:
+          echo "Сумма 1 + 1 = 2";
+          break;
+  };
+
+
   echo "<br /><br />";
 
   echo "Работа с foreach <br \>";
