@@ -2,26 +2,35 @@
 
 # new lessons https://www.youtube.com/watch?v=a6xtQQqx1tg&t=4702s
 
-  $masiv = array(1,2,3,4,5);
-  echo $masiv[2];
-  echo "<br>";
-  $f = array(
+  $masiv = [1,2,3,4,5];
+  echo "Вывод из масима " . $masiv[2];
+  echo "<br \> <br \>";
+  $f = [
       'name' => 'Abraham',
       'surname' => 'Zharko',
       'age' => 20,
       'byear' => 1996,
-      'education' => array(
+      'education' => [
           'school in 2003',
           'colleg in 2013'
-      ) // многомерный массив
-  );
+      ] // многомерный массив
+  ];
+  echo "Использование var_dump <br /><br />";
+  var_dump($masiv);
+  echo "<br /><br />";
   echo $f['education'][0];
   echo "<br /><br />";
   echo $masiv[0];
   echo "<br /><br />";
 
   $j = false;
-  //echo ();
+  echo "<br /><br />";
+
+  echo "Работа с foreach <br \>";
+  foreach ($masiv as $masiv) {
+    $masiv ++;
+    echo "Выбирите цифру $masiv <br \>";
+  }
 
   echo "<br /><br />";
   $my_varable = 100;
