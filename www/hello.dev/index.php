@@ -2,6 +2,11 @@
 
 # new lessons https://www.youtube.com/watch?v=a6xtQQqx1tg&t=4702s
 
+  echo "Изучаю метот GET <br \>";
+
+  echo "Получили новые данные: имя - " . $_GET["name"] .
+      ", возраст - " . $_GET["age"] . " лет <br \><br \>";
+
   $masiv = [1,2,3,4,5];
   echo "Вывод из масима " . $masiv[2];
   echo "<br \> <br \>";
@@ -67,17 +72,12 @@
     echo "Выбирите цифру $masiv <br \>";
   }
 
-  echo "<br /><br />";
-  $my_varable = 100;
-  echo $my_varable;
-
-
-# Lesson 8
+  # Lesson 8
 
   echo "<br /><br />";
   $str_1 = "Первая строка <input type=\"text\" >";
   $str_2 = "Вторая строка";
-  echo $str_1." ".$str_2." \" \\";
+  echo $str_1 . " " . $str_2 . " \" \\";
   echo "<br />";
   echo '"';
 
