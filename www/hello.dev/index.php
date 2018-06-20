@@ -2,11 +2,33 @@
 
 # new lessons https://www.youtube.com/watch?v=a6xtQQqx1tg&t=4702s
 
-  echo "Изучаю метот GET <br \>";
+  echo "<b>Изучаю метот POST</b> <br \>";
+    if (
+    (!empty($_POST["user_name"])&&!empty($_POST["age"]))
+    )
+    {
+        echo "Получили новые данные: имя - " . $_POST["user_name"] .
+            ", возраст - " . $_POST["age"] . " лет <br \><br \>";
+    } else {
+        echo "Переменные не определены ";
+    }
 
-  echo "Получили новые данные: имя - " . $_GET["name"] .
-      ", возраст - " . $_GET["age"] . " лет <br \><br \>";
+  echo "<br \> <br \>";
+  echo "<b>Изучаю метот GET</b> <br \>";
 
+  if (
+  (!empty($_GET["name"])&&!empty($_GET["age"]))
+  )
+  {
+      echo "Получили новые данные: имя - " . $_GET["name"] .
+          ", возраст - " . $_GET["age"] . " лет <br \><br \>";
+  } else {
+      echo "Переменные не определены ";
+  }
+
+
+  echo "<br \> <br \>";
+  echo '<b>Изучаю масивы</b><br \>';
   $masiv = [1,2,3,4,5];
   echo "Вывод из масима " . $masiv[2];
   echo "<br \> <br \>";
@@ -20,7 +42,7 @@
           'colleg in 2013'
       ] // многомерный массив
   ];
-  echo "Использование var_dump <br /><br />";
+  echo "<b>Использование var_dump</b> <br /><br />";
   var_dump($masiv);
   echo "<br /><br />";
   echo $f['education'][0];
@@ -29,10 +51,12 @@
   echo "<br /><br />";
 
   echo "Изучаю function <br />";
+
   function test_f($sum1, $sum2){
     $sumall = $sum1 + $sum2;
     return $sumall;
   };
+
   echo test_f(1,2);
   //var_dump(test_f(1,2));
 
