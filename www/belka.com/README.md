@@ -17,3 +17,8 @@ a
     не использовать фреймворки;
     для работы с БД использовать PDO (или MySQLi);
     сроки до 1 июля;
+    
+Примеры
+
+    https://blog.foolsoft.ru/php-sozdanie-formy-vxoda-i-skript-avtorizacii-na-sajte/
+
