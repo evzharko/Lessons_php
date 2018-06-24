@@ -27,7 +27,7 @@ services:
         volumes:
             - ./www:/var/www
     mysql:
-        image: mysql:8
+        image: mysql:5.7
         ports:
             - "3306:3306"
         volumes:
@@ -35,3 +35,4 @@ services:
         # задаем пароль для root пользователя
         environment:
             MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: belka

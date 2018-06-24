@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru" >
+<?
+    require "config.php";
+
+    $data = $_POST;
+
+?>
 
 <head>
     <meta charset="UTF-8">
