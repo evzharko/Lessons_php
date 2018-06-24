@@ -12,6 +12,8 @@ $password='password';
 
 try {
     $db = new PDO("mysql:host=$host;database=$database",$user,$password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 }
 
 catch (PDOException $pdoe) {
@@ -20,13 +22,4 @@ catch (PDOException $pdoe) {
 
 if (!$db) {
     echo "<br>Ошибка подключения к базе данных";
-}
-
-// Делаем выборку из базы и отображаем результат
-$result = $db->query("SELECT email FROM admin_users");
-
-while($row = $result->fetch()) {
-    ?>
-    Name: [<?php echo $row['email'] ?>]<br/>
-    <?php
 }

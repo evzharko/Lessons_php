@@ -1,6 +1,5 @@
 <?
-include ('config.php');
+include_once ('config2.php');
 
-$res = $db->query("Select * from admin_users");
-echo $res;
+
 ?>
