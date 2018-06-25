@@ -8,16 +8,24 @@ session_start();
         $user = "Select * From belka.admin_users Where email = ?";
         $stmt = $db->prepare($user);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->bindParam(1, $email);
+        $stmt->bindParam(1, $_POST['usermail']);
 
-        $email = 'ev.zharko@gmail.com';
+        //$email = 'i.belka@gmail.com';
         $stmt->execute();
 
-        echo "<pre>";
-        foreach ($stmt as $l){
-            print_r($l);
+        if ($stmt->rowCount())
+        {
+          header('location: /admin.php');
         }
-        if ($user)
+        else
+        {
+
+            var_dump($stmt->rowCount()) ;
+            //   echo 'Not Found!';
+        }
+
+
+        /*if ($user)
         {
             // логин существует
             echo 'ok';
@@ -28,12 +36,12 @@ session_start();
         if ( ! empty($errors) )
         {
             echo array_shift($errors);
-        }
+        }*/
 
     }
 
 ?>
-<!--
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -56,4 +64,3 @@ session_start();
 
 </body>
 </html>
--->

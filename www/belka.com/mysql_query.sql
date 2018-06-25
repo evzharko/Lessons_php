@@ -28,7 +28,7 @@ CREATE UNIQUE INDEX users_id_uindex ON users (id);
 INSERT INTO admin_users (email, password, is_active)
 
 VALUES
-    ('i.delka@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
+    ('i.belka@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
     ('ev.zharko@gmail.com', '202cb962ac59075b964b07152d234b70', 1);
 
 

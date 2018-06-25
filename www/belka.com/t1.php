@@ -14,10 +14,6 @@ foreach ($stmt as $l){
     print_r($l);
 }
 
-if (!$stmt){
-    print_r('s');
-}
-
 /*Вывести select
     $query = "SELECT * FROM belka.admin_users";
     $stmt = $db->query($query);
