@@ -10,7 +10,6 @@ session_start();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->bindParam(1, $_POST['usermail']);
 
-        //$email = 'i.belka@gmail.com';
         $stmt->execute();
 
         if ($stmt->rowCount())
