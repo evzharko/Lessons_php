@@ -1,5 +1,5 @@
 <?
-require "config2.php";
+require "config.php";
 
 $query = "Select * From belka.admin_users Where email = ?";
 $stmt = $db->prepare($query);

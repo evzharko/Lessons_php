@@ -1,5 +1,5 @@
 <?
-
+session_start(['cookie_lifetime' => 1000]);
 /* В этом файле производим подключение к базе данных
    http://www.pixelcom.crimea.ua/pdo-dlya-php-i-mysql.html
 */

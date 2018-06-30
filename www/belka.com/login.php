@@ -1,42 +1,46 @@
-<?
-require "config2.php";
-session_start();
+<?php
+require "config.php";
 
-    if (isset($_POST['login_but']))
+$login_but = $_POST['login_but'];
+$login = $_POST['usermail'];
+$password = md5($_POST['password']);
+
+    if (isset($login_but))
     {
-        $errors = [];
-        $user = "Select * From belka.admin_users Where email = ?";
+        //$errors = [];
+        $user = "Select * From belka.admin_users Where email = ? AND password = ?";
         $stmt = $db->prepare($user);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->bindParam(1, $_POST['usermail']);
+        /*$stmt->bindParam(1, $login);
+        $stmt->bindParam(2, $password);
+        */
+        /* Второй варинат реализации
+        $stmt->bindParam(":login", $login);
+        $stmt->bindParam(":password", $password);
+        */
 
-        $stmt->execute();
-
+        $stmt->execute(array($login,$password));
+/* Почему не поллучается так?
+    if ($stmt['email']=$login)
+    {
+        echo'1';
+    }
+*/
         if ($stmt->rowCount())
         {
-          header('location: /admin.php');
+            // Как в сессию всунуть сразу весь масив?
+            $_SESSION['login_user']=$login;
+            header('location: admin.php');
         }
         else
         {
-
-            var_dump($stmt->rowCount()) ;
-            //   echo 'Not Found!';
+            $errors[] = 'Логин или пароль введены не верно';
         }
 
-
-        /*if ($user)
-        {
-            // логин существует
-            echo 'ok';
-        } else
-        {
-            $errors[] = 'Такого пользователя не существует';
-        }
-        if ( ! empty($errors) )
+        if (isset($errors) )
         {
             echo array_shift($errors);
-        }*/
-
+        }
     }
 
 ?>
