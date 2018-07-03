@@ -2,16 +2,24 @@
 <?php
 // Генерируем отчет по задействованию gsm и ip-каналов по телефонии
 
-//define('MAIN_PATH', '/var/www/work-v3');
+// Подклчюение к базе данных
 
-// Парсинг файла настроек
+$host = 'satun';
+$base = 'asterisk';
+$user = 'ubuntos';
+$password = 'ubuntos';
 
-//$commonData = parse_ini_file(MAIN_PATH.'/_data/settings.ini', true);
-// Подключение файла функций
-//require MAIN_PATH.'/_data/common_functions.php';
-// Подключае автозагрузчик наши классов в том числе и Twig
-//require_once MAIN_PATH.'/_data/autoloader.php';
+try {
+    $db = new PDO("mysql:host=$host;databse=$base;$user, $password");
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
 
+catch (PDOException $error){
+    echo $error->getMessage();
+}
+
+
+/*
 mb_internal_encoding('UTF-8');
 setlocale(LC_ALL, 'ru_RU.UTF-8');
 
@@ -68,4 +76,5 @@ for($i=0;$i<$n;$i++) $message.= "saturn-vm ".mysql_result($result5,$i,peer_in). 
  file_put_contents('/tmp/channels', $message);
  $cmd = 'zabbix_sender -vv -z 192.168.0.33 -i /tmp/channels';
  echo `$cmd`;
+*/
 ?>
