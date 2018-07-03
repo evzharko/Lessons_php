@@ -1,16 +1,17 @@
-#!/usr/bin/php
+
 <?php
+//!/usr/bin/php
 // Генерируем отчет по задействованию gsm и ip-каналов по телефонии
 
 // Подклчюение к базе данных
 
-$host = 'satun';
-$base = 'asterisk';
-$user = 'ubuntos';
-$password = 'ubuntos';
+$host='saturn';
+$database='asterisk';
+$user='ubuntos';
+$password='ubuntos';
 
 try {
-    $db = new PDO("mysql:host=$host;databse=$base;$user, $password");
+    $db = new PDO("mysql:host=$host;database=$database", $user, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 
@@ -18,22 +19,21 @@ catch (PDOException $error){
     echo $error->getMessage();
 }
 
+$query0 = "SELECT * FROM" . " " . $database . ".peers_out_time_month WHERE peer_out NOT like 'beeline%' AND peer_out NOT like 'inter%'" ;
+$query1 = "SELECT * FROM" . " " . $database . ".peers_out_time_month WHERE peer_out like 'beeline%' OR peer_out like 'inter%'" ;
+$result = $db->query($query0);
+$result = $db->query($query1);
+
+// Проверка, если есть значения выполнять код дальше.
+//if ($result->rowCount() > 0)
+// Вывод значений с базы.
+    foreach ($result as $row) {
+    echo "saturn-vm " . $row['peer_out'] . "_" . $row['dcontext'] . " " . $row['minutes'] . '</br>';
+   }
+
+
 
 /*
-mb_internal_encoding('UTF-8');
-setlocale(LC_ALL, 'ru_RU.UTF-8');
-
-$host="127.0.0.1";
-$user="ubuntos";
-$pwd="ubuntos";
-$db=mysql_connect($host,$user,$pwd);
-mysql_select_db("asterisk",$db);
-//$message= "<b>Исходящие звонки в текущем месяце</b><br>"; 
-//$message.= "<br>GSM-каналы:<br>"; 
-$result=mysql_query("SELECT peers_out_time_month.* FROM peers_out_time_month  WHERE peer_out NOT like 'beeline%' AND peer_out NOT like 'inter%'");
-$n = mysql_num_rows($result);
-//$message.= "|Шлюз | Направление | Время(мин) |";
-for($i=0;$i<$n;$i++) $message.= "saturn-vm " .mysql_result($result,$i,peer_out). "_". mysql_result($result,$i,dcontext). " " .mysql_result($result,$i,minutes). "\r\n";
 
 $result_new=mysql_query("SELECT peers_out_time_month.* FROM peers_out_time_month WHERE peer_out like 'beeline%' OR peer_out like 'inter%'");
 $n = mysql_num_rows($result_new);
