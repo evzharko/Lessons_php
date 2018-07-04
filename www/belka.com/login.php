@@ -8,7 +8,7 @@ $password = md5($_POST['password']);
     if (isset($login_but))
     {
         //$errors = [];
-        $user = "Select * From belka.admin_users Where email = ? AND password = ?";
+        $user = "Select * From admin_users Where email = ? AND password = ?";
         $stmt = $db->prepare($user);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         /*$stmt->bindParam(1, $login);
