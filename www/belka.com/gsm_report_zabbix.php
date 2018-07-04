@@ -48,10 +48,7 @@ WHERE
     peer_out LIKE 'beeline%' OR
     peer_out LIKE 'inter%' OR
     peer_out LIKE 'life%'
-    ";
-
-$query1 =
-    "
+UNION
 /*Вывод по коду оператора, города*/
 SELECT 
     cod, 
@@ -67,12 +64,11 @@ SELECT
 FROM 
     peers_in_time_month 
 Where 
-    not peer_in = ''  
+    not peer_in = ''
     ";
 
 $result = $db->query($query);
 $result0 = $db->query($query0);
-$result1 = $db->query($query1);
 
 // Вывод значений с базы.
 $content = "";
@@ -87,12 +83,6 @@ $content = "";
     foreach ($result0 as $row):
 
         $content .= sprintf("saturn-vm %s %s\n", $row['peer_out'],$row['minutes']);
-
-    endforeach;
-
-    foreach ($result1 as $row):
-
-        $content .= sprintf("saturn-vm %s %s\n", $row['cod'],$row['minutes']);
 
     endforeach;
 
