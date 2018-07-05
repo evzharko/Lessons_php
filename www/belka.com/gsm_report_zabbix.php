@@ -75,9 +75,7 @@ $content = "";
     foreach ($result as $row):
 
         $content .= sprintf("saturn-vm %s_%s %s\n", $row['peer_out'],$row['dcontext'],$row['minutes']);
-        //echo sprintf("saturn-vm %s_%s %s</br>", $row['peer_out'],$row['dcontext'],$row['minutes']);
-        // В чем разница если echo выводяться какие-то цифры.
-        //printf("saturn-vm %s_%s %s</br>", $row['peer_out'],$row['dcontext'],$row['minutes']);
+
     endforeach;
 
     foreach ($result0 as $row):
