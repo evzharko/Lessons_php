@@ -87,7 +87,7 @@ echo "
 
 foreach ($array as $row) {
 
-    //Сортируем данные от группы
+    //Сортируем данные группы
     if (!$group || ($group && $row['groupid'] == $group))
     echo "
            <tr>
