@@ -32,22 +32,19 @@ WHERE
 	ip LIKE '192.168.%'
 ";
 $result = $db->query($query);
-
-foreach ($result as $row) {
-    //printf ("%s   IP  %s </br>", $row['dns'], $row['ip']);
     echo "
           <style type=\"text/css\">
-               TABLE {
+               Table {
                 border: 1px solid black;
                 border-collapse: collapse;
                }
                TD, TH {
-                border: 1px solid black; 
+                border: 1px #989898  solid; 
                 text-align: center; 
                 padding: 4px; 
                }
                TH {
-                background: darkgreen;
+                background: beige;
                 height: 15px; 
                 vertical-align: bottom; 
                 padding: 0; 
@@ -55,9 +52,19 @@ foreach ($result as $row) {
           </style>
           
           <table>
-            <tr><th>DNS</th><th>IP</th><th>NEW IP</th><tr>
-            <td>" . $row['dns'] . "</td><td>" . $row['ip'] . "</td><td><input value='' placeholder='new ip'></td>
-            
-          </table>";
+          <tr><th>DNS</th><th>IP</th><th>Port</th><th>NEW IP</th><tr>
+";
+
+foreach ($result as $row) {
+
+    echo "
+           <tr>
+           <td>" . $row['dns'] . "</td>
+           <td>" . $row['ip'] . "</td>
+           <td>" . $row['port'] . "</td>
+           <td><input value='' placeholder='new ip'></td>
+           </tr>
+           ";
 }
+    echo "</table>";
 ?>
