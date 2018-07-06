@@ -29,7 +29,7 @@ catch (PDOException $error) {
 
 $query_group = "
 SELECT 
-	DISTINCT(gr.groupid), gr.name, tf.dns, tf.ip, tf.port, INET_ATON (tf.ip) as ip1
+	DISTINCT(gr.groupid), gr.name, tf.dns, tf.ip, INET_ATON (tf.ip) as ip1
 FROM 
 	hosts ho
 JOIN hosts_groups hs ON hs.hostid=ho.hostid
@@ -81,7 +81,7 @@ echo "
           </style>
           
           <table>
-          <tr><th>DNS</th><th>IP</th><th>Port</th><th>NEW IP</th><tr>
+          <tr><th>DNS</th><th>IP</th><th>NEW IP</th><tr>
 ";
 
 
@@ -93,7 +93,6 @@ foreach ($array as $row) {
            <tr>
            <td>" . $row['dns'] . "</td>
            <td>" . $row['ip'] . "</td>
-           <td>" . $row['port'] . "</td>
            <td><input value='' placeholder='new ip'></td>
            </tr>
            ";
