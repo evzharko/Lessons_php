@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Created by PhpStorm.
@@ -19,11 +18,9 @@ $password = 'hwth5t3gq3hawgrger';
 
 try {
     $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
-    $db->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-}
-
-catch (PDOException $error) {
+} catch (PDOException $error) {
     echo $error->getMessage();
 }
 
@@ -48,8 +45,7 @@ $group = $_GET["g"];
 echo "<select name='group' id='select'>";
 
 $array = [];
-foreach($result_group as $item_group)
-{
+foreach ($result_group as $item_group) {
     //Зансоим в масив для следующего прохода foreach
     $array[] = $item_group;
     //Select остаеться на той группе которая выбрана
@@ -79,34 +75,53 @@ echo "
                 padding: 0; 
                }
           </style>
-          
+          <form method='post' action=''>
           <table>
           <tr><th>DNS</th><th>IP</th><th>NEW IP</th><tr>
 ";
-
 
 foreach ($array as $row) {
 
     //Сортируем данные группы
     if (!$group || ($group && $row['groupid'] == $group))
-    echo "
+        echo "
            <tr>
            <td>" . $row['dns'] . "</td>
            <td>" . $row['ip'] . "</td>
-           <td><input value='' placeholder='new ip'></td>
+           <td><input type='text' name='new_ip[{$row['ip']}]' placeholder='new ip'></td>
            </tr>
            ";
 }
-    echo "</table>";
+echo "</table><button type=\"submit\" name=\"change\">Внести изменения</button></form>";
 
+if (isset($_POST['change'])) {
+    $change = $_POST['change'];
+
+    $ips = isset($_POST['new_ip']) && is_array($_POST['new_ip']) ? $_POST['new_ip'] : [];
+
+
+
+    foreach ($ips as $ip => $value) {
+        //
+    }
+
+}
+echo "<pre>";
+var_dump($_POST);
 ?>
+
+</br>
+
 <?php
 //Скриптом ловим айдишку и далее ловим ее GET
 ?>
 <script>
-    document.getElementById('select').addEventListener('change', function(e){
-        document.location.href = '?g='+e.target.value;
+    document.getElementById('select').addEventListener('change', function (e) {
+        document.location.href = '?g=' + e.target.value;
     })
 </script>
 
+<?
 
+
+?>

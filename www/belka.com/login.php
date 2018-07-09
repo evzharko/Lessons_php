@@ -1,12 +1,12 @@
 <?php
 require "config.php";
 
-$login_but = $_POST['login_but'];
-$login = $_POST['usermail'];
-$password = md5($_POST['password']);
 
-    if (isset($login_but))
+    if (isset($_POST['login_but']))
     {
+        $login_but = $_POST['login_but'];
+        $login = $_POST['usermail'];
+        $password = md5($_POST['password']);
         //$errors = [];
         $user = "Select * From admin_users Where email = ? AND password = ?";
         $stmt = $db->prepare($user);
