@@ -80,7 +80,7 @@ echo "
           <tr><th>DNS</th><th>IP</th><th>NEW IP</th><tr>
 ";
 
-foreach ($array as $row) {
+foreach ($array as $row) {l
 
     //Сортируем данные группы
     if (!$group || ($group && $row['groupid'] == $group))
