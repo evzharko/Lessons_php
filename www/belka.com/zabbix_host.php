@@ -38,8 +38,6 @@ ORDER BY ip1;
 	";
 
 $result_group = $db->query($query_group);
-//Берем айди группы
-$group = $_GET["g"];
 
 //Выводим список select
 echo "<select name='group' id='select'>";
@@ -47,6 +45,8 @@ echo "<select name='group' id='select'>";
 $array = [];
 foreach ($result_group as $item_group) {
     //Зансоим в масив для следующего прохода foreach
+    //Берем айди группы
+    $group = $_GET["g"];
     $array[] = $item_group;
     //Select остаеться на той группе которая выбрана
     $selected = $group == $item_group['groupid'] ? 'selected' : null;
@@ -92,34 +92,44 @@ foreach ($array as $row) {l
            </tr>
            ";
 }
-echo "</table><button type=\"submit\" name=\"change\">Внести изменения</button></form>";
+echo "</table></br><button type=\"submit\" name=\"change\">Внести изменения</button></form>";
 
 if (isset($_POST['change'])) {
-    $change = $_POST['change'];
 
-    $ips = isset($_POST['new_ip']) && is_array($_POST['new_ip']) ? $_POST['new_ip'] : [];
+    $ips = (isset($change) && is_array($change)) ? $_POST['new_ip'] : [];
+    $old_ip = $row['ip'];
 
+    $query_update = "
+UPDATE 
+  interface 
+SET";
 
+  $update = $db->prepare($query_update);
 
-    foreach ($ips as $ip => $value) {
-        //
-    }
+  foreach ($ips as $ip=>$val){
+      $qry.="$ip='$val'";
+      echo $qry;
+  }
+
+  $qry.="Where ip = '':old_ip''";
+    echo "<pre>";
+    var_dump($_POST);
+
 
 }
-echo "<pre>";
-var_dump($_POST);
+
 ?>
 
-</br>
+    </br>
 
 <?php
 //Скриптом ловим айдишку и далее ловим ее GET
 ?>
-<script>
-    document.getElementById('select').addEventListener('change', function (e) {
-        document.location.href = '?g=' + e.target.value;
-    })
-</script>
+    <script>
+        document.getElementById('select').addEventListener('change', function (e) {
+            document.location.href = '?g=' + e.target.value;
+        })
+    </script>
 
 <?
 
