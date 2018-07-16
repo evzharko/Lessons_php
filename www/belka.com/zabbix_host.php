@@ -34,6 +34,7 @@ JOIN groups gr ON gr.groupid=hs.groupid
 JOIN interface tf ON tf.hostid=ho.hostid
 WHERE 
 	tf.ip LIKE '192.168.%'
+GROUP BY gr.groupid, dns
 ORDER BY ip1;
 	";
 
@@ -80,7 +81,7 @@ echo "
           <tr><th>DNS</th><th>IP</th><th>NEW IP</th><tr>
 ";
 
-foreach ($array as $row) {l
+foreach ($array as $row) {
 
     //Сортируем данные группы
     if (!$group || ($group && $row['groupid'] == $group))
@@ -96,25 +97,25 @@ echo "</table></br><button type=\"submit\" name=\"change\">Внести изме
 
 if (isset($_POST['change'])) {
 
+    $change = $_POST['new_ip'];
     $ips = (isset($change) && is_array($change)) ? $_POST['new_ip'] : [];
-    $old_ip = $row['ip'];
 
-    $query_update = "
-UPDATE 
-  interface 
-SET";
+    foreach ($ips as $item => $value) {
+        if (!empty($value)) {
+            $sql = "UPDATE interface SET ip = :new_ip WHERE ip = :old_ip";
+            $result = $db->prepare($sql);
+            $exec = $result->execute(array(":new_ip"=>$value, ":old_ip"=>$item));
 
-  $update = $db->prepare($query_update);
+            echo $item . " Update execute </br>" ;
+            //var_dump($exec);
 
-  foreach ($ips as $ip=>$val){
-      $qry.="$ip='$val'";
-      echo $qry;
-  }
+        } else {
+            echo $item . " Update not execute </br>" ;
+        }
+    }
 
-  $qry.="Where ip = '':old_ip''";
-    echo "<pre>";
-    var_dump($_POST);
-
+      /*  echo "<pre>";
+        var_dump($_POST);*/
 
 }
 
