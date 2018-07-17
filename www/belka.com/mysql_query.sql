@@ -24,13 +24,25 @@ CREATE UNIQUE INDEX users_id_uindex ON users (id);
 /*Мой пароль "123" в md5*/
 /* 202cb962ac59075b964b07152d234b70 */
 
-/*Добавить пользователей в даминку*/
+/*Добавить пользователей в админку*/
 INSERT INTO admin_users (email, password, is_active)
 
 VALUES
     ('i.belka@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
     ('ev.zharko@gmail.com', '202cb962ac59075b964b07152d234b70', 1);
 
+/*Таблица с постами*/
+CREATE TABLE posts
+(
+    id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    data_create date NOT NULL,
+    data_edit date,
+    title varchar(255),
+    body varchar(255),
+    is_active int,
+    images varchar(255)
+);
+CREATE UNIQUE INDEX posts_id_uindex ON posts (id);
 
 
 
