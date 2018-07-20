@@ -17,7 +17,8 @@ FROM
 	posts
 WHERE 
     view > 0
-ORDER BY view DESC";
+ORDER BY view DESC
+LIMIT 3";
 
     $stmt = $db->query($query);
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
