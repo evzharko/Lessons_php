@@ -1,3 +1,10 @@
+<?php
+
+require_once "config.php";
+require_once "function/function.php";
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,7 +27,6 @@
 <body>
 
 
-
 <header role="banner">
     <div class="top-bar">
         <div class="container">
@@ -34,7 +40,7 @@
                     <a href="#"><span class="fa fa-snapchat"></span></a>
                 </div>
                 <div class="col-3 search-top">
-                     <!--<a href="#"><span class="fa fa-search"></span></a> -->
+                    <!--<a href="#"><span class="fa fa-search"></span></a> -->
                     <form action="#" class="search-top-form">
                         <span class="icon fa fa-search"></span>
                         <input type="text" id="s" placeholder="Type keyword to search...">
@@ -47,7 +53,8 @@
     <div class="container logo-wrap">
         <div class="row pt-5">
             <div class="col-12 text-center">
-                <a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button" aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
+                <a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button"
+                   aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
                 <h1 class="site-logo"><a href="index.html">Balita</a></h1>
             </div>
         </div>
@@ -63,7 +70,8 @@
                         <a class="nav-link active" href="index.html">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Travel</a>
+                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown04" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Travel</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             <a class="dropdown-item" href="category.html">Asia</a>
                             <a class="dropdown-item" href="category.html">Europe</a>
@@ -75,7 +83,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Categories</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown05">
                             <a class="dropdown-item" href="category.html">Lifestyle</a>
                             <a class="dropdown-item" href="category.html">Food</a>
@@ -106,7 +115,8 @@
 
                 <div class="owl-carousel owl-theme home-slider">
                     <div>
-                        <a href="blog-single.html" class="a-block d-flex align-items-center height-lg" style="background-image: url('images/img_1.jpg'); ">
+                        <a href="blog-single.html" class="a-block d-flex align-items-center height-lg"
+                           style="background-image: url('images/img_1.jpg'); ">
                             <div class="text half-to-full">
                                 <div class="post-meta">
                                     <span class="category">Lifestyle</span>
@@ -114,12 +124,14 @@
                                     <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                                 </div>
                                 <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta eaque ipsa laudantium!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta
+                                    eaque ipsa laudantium!</p>
                             </div>
                         </a>
                     </div>
                     <div>
-                        <a href="blog-single.html" class="a-block d-flex align-items-center height-lg" style="background-image: url('images/img_2.jpg'); ">
+                        <a href="blog-single.html" class="a-block d-flex align-items-center height-lg"
+                           style="background-image: url('images/img_2.jpg'); ">
                             <div class="text half-to-full">
                                 <div class="post-meta">
                                     <span class="category">Lifestyle</span>
@@ -127,12 +139,14 @@
                                     <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                                 </div>
                                 <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta eaque ipsa laudantium!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta
+                                    eaque ipsa laudantium!</p>
                             </div>
                         </a>
                     </div>
                     <div>
-                        <a href="blog-single.html" class="a-block d-flex align-items-center height-lg" style="background-image: url('images/img_3.jpg'); ">
+                        <a href="blog-single.html" class="a-block d-flex align-items-center height-lg"
+                           style="background-image: url('images/img_3.jpg'); ">
                             <div class="text half-to-full">
                                 <div class="post-meta">
                                     <span class="category">Lifestyle</span>
@@ -140,51 +154,32 @@
                                     <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                                 </div>
                                 <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta eaque ipsa laudantium!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nobis, ut dicta
+                                    eaque ipsa laudantium!</p>
                             </div>
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
+
+
         <div class="row">
-            <div class="col-md-6 col-lg-4">
-                <a href="blog-single.html" class="a-block d-flex align-items-center height-md" style="background-image: url('images/img_2.jpg'); ">
-                    <div class="text">
-                        <div class="post-meta">
-                            <span class="category">Lifestyle</span>
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+            <?php foreach (Top_Posts() as $post): ?>
+                <div class="col-md-6 col-lg-4">
+                    <a href="blog-single.html" class="a-block d-flex align-items-center height-md"
+                       style="background-image: url('images/img_2.jpg'); ">
+                        <div class="text">
+                            <div class="post-meta">
+                                <span class="category">Lifestyle</span>
+                                <span class="mr-2">March 15, 2018 </span> &bullet;
+                                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                            </div>
+                            <h3><?= $post['title']; ?></h3>
                         </div>
-                        <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <a href="blog-single.html" class="a-block d-flex align-items-center height-md" style="background-image: url('images/img_3.jpg'); ">
-                    <div class="text">
-                        <div class="post-meta">
-                            <span class="category">Travel</span>
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                        </div>
-                        <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <a href="blog-single.html" class="a-block d-flex align-items-center height-md" style="background-image: url('images/img_4.jpg'); ">
-                    <div class="text">
-                        <div class="post-meta">
-                            <span class="category">Food</span>
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                        </div>
-                        <h3>There’s a Cool New Way for Men to Wear Socks and Sandals</h3>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
@@ -336,7 +331,8 @@
 
                         <div class="post-entry-horzontal">
                             <a href="blog-single.html">
-                                <div class="image element-animate"  data-animate-effect="fadeIn" style="background-image: url(images/img_10.jpg);"></div>
+                                <div class="image element-animate" data-animate-effect="fadeIn"
+                                     style="background-image: url(images/img_10.jpg);"></div>
                                 <span class="text">
                       <div class="post-meta">
                         <span class="category">Travel</span>
@@ -351,7 +347,8 @@
 
                         <div class="post-entry-horzontal">
                             <a href="blog-single.html">
-                                <div class="image element-animate"  data-animate-effect="fadeIn" style="background-image: url(images/img_11.jpg);"></div>
+                                <div class="image element-animate" data-animate-effect="fadeIn"
+                                     style="background-image: url(images/img_11.jpg);"></div>
                                 <span class="text">
                       <div class="post-meta">
                         <span class="category">Lifestyle</span>
@@ -366,7 +363,8 @@
 
                         <div class="post-entry-horzontal">
                             <a href="blog-single.html">
-                                <div class="image element-animate"  data-animate-effect="fadeIn" style="background-image: url(images/img_12.jpg);"></div>
+                                <div class="image element-animate" data-animate-effect="fadeIn"
+                                     style="background-image: url(images/img_12.jpg);"></div>
                                 <span class="text">
                       <div class="post-meta">
                         <span class="category">Food</span>
@@ -381,7 +379,6 @@
 
                     </div>
                 </div>
-
 
 
             </div>
@@ -403,7 +400,9 @@
                         <img src="images/person_1.jpg" alt="Image Placeholder" class="img-fluid">
                         <div class="bio-body">
                             <h2>Meagan Smith</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt
+                                repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias
+                                minus.</p>
                             <p><a href="#" class="btn btn-primary btn-sm">Read my bio</a></p>
                             <p class="social">
                                 <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
@@ -505,7 +504,8 @@
                     <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid">
                 </p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium optio unde perferendis eum illum voluptatibus dolore tempora, consequatur minus asperiores temporibus reprehenderit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium optio unde perferendis
+                    eum illum voluptatibus dolore tempora, consequatur minus asperiores temporibus reprehenderit.</p>
             </div>
             <div class="col-md-6 ml-auto">
                 <div class="row">
@@ -585,7 +585,9 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                        href="https://colorlib.com" target="_blank">Colorlib</a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </div>
         </div>
@@ -594,7 +596,13 @@
 <!-- END footer -->
 
 <!-- loader -->
-<div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+<div id="loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#f4b214"/>
+    </svg>
+</div>
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/jquery-migrate-3.0.0.js"></script>

@@ -5,35 +5,45 @@
  * Date: 17.07.2018
  * Time: 22:34
  */
-include "../config.php";
 
-function Posts()
+function Top_Posts()
 {
-    require("../config.php");
+    global $db;
+
     $query = "
 SELECT 
 	*
 FROM
-	posts";
+	posts
+WHERE 
+    view > 0
+ORDER BY view DESC";
 
     $stmt = $db->query($query);
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-    foreach ($stmt as $item) {
-        /*$var = $item['title'];
-        $var1 = $item['body'];
-        return array('val' => $var, 'val1' => $var1);*/
-        return $item;
-    }
+    return $stmt;
+
+//    foreach ($stmt as $item) {
+//        //echo  $item['title'];
+//        /*$var = $item['title'];
+//        $var1 = $item['body'];
+//        return array('val' => $var, 'val1' => $var1);*/
+//        yield $item;
+//    }
 
 }
-echo "<pre>";
 /*echo "<pre>";
-var_dump(Posts());*/
-//var_dump($item);
+echo "<pre>";
 var_dump(Posts());
-Posts();
+var_dump($item);
+var_dump(Posts());*/
 
+/*foreach (Posts() as $post)
+{
+    echo $post['title'];
+    echo $post['body'];
+}*/
 
 
 ?>

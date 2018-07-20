@@ -40,6 +40,7 @@ CREATE TABLE posts
     title varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
     body text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
     is_active int,
+    view int,
     images varchar(255)
 );
 CREATE UNIQUE INDEX posts_id_uindex ON posts (id);

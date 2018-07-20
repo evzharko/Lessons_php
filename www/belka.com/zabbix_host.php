@@ -9,7 +9,7 @@
 ini_set('display_errors', true);
 error_reporting(E_ALL);
 
-$host = '192.168.0.33';
+$host = 'atlas';
 $dbname = 'zabbix';
 $user = 'reactor';
 $password = 'hwth5t3gq3hawgrger';
@@ -22,6 +22,7 @@ try {
 
 } catch (PDOException $error) {
     echo $error->getMessage();
+    return;
 }
 
 $query_group = "
