@@ -72,7 +72,7 @@
                             <div class="post-meta">
                                 <span class="category">Lifestyle</span>
                                 <span class="mr-2">March 15, 2018 </span> &bullet;
-                                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                                <span class="ml-2"><span class="fa fa-comments"></span> $post{'title'};</span>
                             </div>
                             <h3><?= $post['title']; ?></h3>
                         </div>
