@@ -67,12 +67,12 @@
             <?php foreach (Top_Posts() as $post): ?>
                 <div class="col-md-6 col-lg-4">
                     <a href="blog-single.html" class="a-block d-flex align-items-center height-md"
-                       style="background-image: url('images/img_2.jpg'); ">
+                       style="background-image: url('<?= $post['images']; ?>'); ">
                         <div class="text">
                             <div class="post-meta">
                                 <span class="category">Lifestyle</span>
-                                <span class="mr-2">March 15, 2018 </span> &bullet;
-                                <span class="ml-2"><span class="fa fa-comments"></span> $post{'title'};</span>
+                                <span class="mr-2"><?= date('M d, Y', strtotime($post['data_create'])  ) ; ?> </span> &bullet;
+                                <span class="ml-2"><span class="fa fa-comments"></span><?= $post{'view'}; ?></span>
                             </div>
                             <h3><?= $post['title']; ?></h3>
                         </div>
@@ -81,7 +81,7 @@
             <?php endforeach; ?>
         </div>
     </div>
-    <!-- End TOP New  -->
+    <!-- End TOP New  March 15, 2018-->
 
 </section>
 <!-- END section -->
