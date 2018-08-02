@@ -1,0 +1,26 @@
+/*My style*/
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px #989898 solid;
+
+    text-align: center;
+    padding: 4px;
+}
+
+th {
+    background-color: #c8cbcf;
+    height: 15px;
+    vertical-align: bottom;
+    padding: 0;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}
+

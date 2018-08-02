@@ -36,7 +36,6 @@ CREATE TABLE posts
 (
     id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     data_create date NOT NULL,
-    data_edit date,
     title varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
     body text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
     is_active int,
@@ -44,6 +43,4 @@ CREATE TABLE posts
     images varchar(255)
 );
 CREATE UNIQUE INDEX posts_id_uindex ON posts (id);
-
-
 

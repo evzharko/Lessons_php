@@ -34,17 +34,36 @@ LIMIT 3";
 //    }
 
 }
-/*echo "<pre>";
-echo "<pre>";
-var_dump(Posts());
-var_dump($item);
-var_dump(Posts());*/
 
-/*foreach (Posts() as $post)
+function Posts_admin()
 {
-    echo $post['title'];
-    echo $post['body'];
-}*/
+    global $db;
+
+    $query = "
+SELECT 
+	*
+FROM
+	posts
+";
+
+    $stmt = $db->query($query);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    return $stmt;
+}
 
 
-?>
+    /*echo "<pre>";
+    echo "<pre>";
+    var_dump(Posts());
+    var_dump($item);
+    var_dump(Posts());*/
+
+    /*foreach (Posts() as $post)
+    {
+        echo $post['title'];
+        echo $post['body'];
+    }*/
+
+
+    ?>
