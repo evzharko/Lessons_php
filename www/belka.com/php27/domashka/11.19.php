@@ -1,29 +1,26 @@
 <?php
 echo "Lesson 11.19 <br><br>";
 
-$array = [1,2,3,4,5];
+$array = [1, 2, 3];
 $a = 20;
 echo "<pre>";
- 
+
 echo "Определить сумму всех элементов массива <br>";
-foreach ($array as $value) {
-	//$value += $array[];
-	echo $value;
+
+for ($i = 0; $i < 3; $i++) {
+    $array1[$i] = rand(0, 5);
+    print $array1[$i];
 }
-
-
 echo "<br>";
 
-echo "Увеличить на  число $a <br>";
-foreach ($array as $value) {
-	$value += $a;
-	var_dump($value);
+for ($i = 0; $i < 3; $i++) {
+    $sum += $array[$i];
 }
 
-echo "<br>";
+echo 'Сумма элементов масива ' . $sum;
 
-echo 'Разделить на первый элемент <br>';
-foreach ($array as $value) {
-	$value /= $array[1];
-	var_dump($value);
-}
+/*
+foreach ($array as $key => $value) {
+    $value += $array[$key];
+    echo $value;
+}*/
