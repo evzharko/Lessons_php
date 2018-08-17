@@ -1,11 +1,17 @@
 <?php
 echo "Lesson 11.21 <br><br>";
 
-$array_j=[];
+echo "<pre>";
+//$array_j=[];
 for ($i=1; $i < 32; $i++) { 
-	//echo $i . ' ';
-	$array_j[] = $i;
-	
+	$array_j[$i] = rand(0,10);
 }
 
-var_dump($array_j);
+$sum = 0;
+
+foreach ($array_j as $value) {
+	$sum += $value; 
+}
+
+echo $sum;
+//var_dump($array_j);
