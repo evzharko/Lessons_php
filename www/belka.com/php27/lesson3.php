@@ -45,3 +45,16 @@ function factorial($fact){
 }
 
 echo(factorial(5)) ;
+
+//
+echo "<hr>";
+function factorial1($n)
+{
+	$res = 1;
+	for ($i = 1; $i<=$n; $i++)  {
+		$res*=$i;
+	}
+	return $res;
+}
+
+echo factorial1(5);
