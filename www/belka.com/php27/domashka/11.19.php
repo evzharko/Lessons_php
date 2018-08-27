@@ -1,29 +1,50 @@
 <?php
 echo "Lesson 11.19 <br><br>";
 
-$array = [1,2,3,4,5];
+$array = [1, 2, 3];
 $a = 20;
 echo "<pre>";
- 
-echo "Определить сумму всех элементов массива <br>";
-foreach ($array as $value) {
-	//$value += $array[];
-	echo $value;
+var_dump(pow($array[2], 2));
+
+
+//Генерим масив с слуйчайными числами
+for ($i = 0; $i < 7; $i++) {
+    $array1[$i] = rand(0, 5);
+    print $array1[$i];
 }
-
-
 echo "<br>";
 
-echo "Увеличить на  число $a <br>";
-foreach ($array as $value) {
-	$value += $a;
-	var_dump($value);
+for ($i = 0; $i < 7; $i++) {
+    $sum += $array1[$i];
 }
 
-echo "<br>";
+echo 'Сумма элементов масива ' . $sum . '<br>';
 
-echo 'Разделить на первый элемент <br>';
-foreach ($array as $value) {
-	$value /= $array[1];
-	var_dump($value);
+//
+$pro = 1;
+for ($i = 0; $i < 7; $i++) {
+    $pro *= $array1[$i];
 }
+
+echo 'Произведение элементов масива ' . $pro . '<br>';
+
+//
+
+for ($i = 0; $i < 7; $i++) {
+    $sumk += pow($array1[$i], 2);
+    
+}
+echo 'Сумма квадратов всех элементов масива ' . $sumk . '<br>';
+
+for ($i = 0; $i < 6; $i++) {
+    $sum6 += $array1[$i];
+    
+}
+echo 'Сумма шести первых элементов ' . $sum6 . '<br><br>';
+
+for ($i = 0; $i < 7; $i++) {
+    $sum1 += $array1[$i];
+    $avg = $sum1/7;
+}
+
+echo 'Среднее арифметическое всех элементов ' . $avg . '<br>';
