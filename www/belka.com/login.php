@@ -49,7 +49,7 @@ require "config.php";
 <head>
     <meta charset="UTF-8">
     <title>Login Control Panel</title>
-    <link href="css/style_admin.css" rel="stylesheet">
+    <link href="../php27.com/css/style_admin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
