@@ -12,7 +12,7 @@ require_once "function/fun_cart.php";
     <div>
         <h1>Cart</h1>
         <form method="POST" action="">
-            Кол-во товара <input type="number" min="0" name="count" required="required"/> <br><br>
+            Кол-во товара <input type="int" min="0" name="count" required="required"/> <br><br>
             Цена товара <input type="text" name="price" required="required"/> <br><br>
             <button type="submit" name="submit">Посчитать сумму</button>
             <br><br>
