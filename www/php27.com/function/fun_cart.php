@@ -2,6 +2,7 @@
 
 $count = 0;
 $price = 0;
+//$sum = 0;
 
 function cart_sum($count, $price)
 {
