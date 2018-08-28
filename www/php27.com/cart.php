@@ -20,7 +20,6 @@ require_once "function/fun_cart.php";
         <button type="submit"  name="submit">Посчитать сумму</button> <br><br>
         <?
         echo cart_sum($_POST['count'],$_POST['price']);
-
         ?>
     </form>
 </div>
