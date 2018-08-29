@@ -1,9 +1,12 @@
 <?php
 
 
-function cart_sum($count, $price)
-{
-    if ($count != (int)$count) {
+function cart_sum($count, $price) {
+
+    $str = (string)(int)$count;
+
+    // Проверяем чтобы зашли только значения. Например 2,5 распознаст как строку, а 2.5 как дробное значения.
+    if ($count!==$str) {
         echo 'Кол-во товара должно быть равно единице';
     } else {
         if ($count <= 0 || $price <= 0) {
@@ -15,3 +18,5 @@ function cart_sum($count, $price)
     }
 
 }
+
+
