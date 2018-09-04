@@ -1,6 +1,7 @@
 <?php
 
-echo $_POST['login'];
+require_once "function/fun_cart.php";
+//echo $_SESSION['login'];
 
 ?>
 
@@ -17,7 +18,7 @@ echo $_POST['login'];
 
 <div class="login">
     <h1>Auth Users</h1>
-    <form method="POST" action="">
+    <form method="POST" action="cart.php">
         <input type="text" name="login" placeholder="example" required="required"/>
         <input type="password" name="password" placeholder="password" required="required"/>
         <button type="submit" name="login_but" class="btn btn-primary btn-block btn-large">Login</button>

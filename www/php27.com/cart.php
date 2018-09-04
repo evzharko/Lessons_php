@@ -1,5 +1,8 @@
 <?php
 require_once "function/fun_cart.php";
+echo $_SESSION['login'];
+session_start();
+
 ?>
     <html xmlns="http://www.w3.org/1999/html">
     <head>
@@ -27,6 +30,4 @@ require_once "function/fun_cart.php";
 if (isset($_POST['submit'])) {
     echo cart_sum($_POST['count'], $_POST['price']);
 }
-
-
 
