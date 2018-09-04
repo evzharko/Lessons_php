@@ -1,9 +1,6 @@
 <?php
 require_once "function/fun_cart.php";
 echo $_SESSION['login'];
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = ['sum' => 0, 'items' => []];
-}
 
 
 ?>
@@ -18,10 +15,17 @@ if (!isset($_SESSION['cart'])) {
     <div>
         <h1>Cart</h1>
         <form method="POST" action="">
-            Кол-во товара <input type="number" min="0" name="count" required="required"/> <br><br>
-            Цена товара <input type="text" name="price" required="required"/> <br><br>
-            <button type="submit" name="submit">Посчитать сумму</button>
-            <br><br> К оплате <?php $_SESSION['cart']['sum']; ?>
+            <select name="product">
+                <option value="0">Вберите товар</option>
+                <option value="1">Ботинки</option>
+                <option value="2">Шлепки</option>
+                <option value="3">Плавки</option>
+            </select><br><br>
+            Кол-во товара<br>
+            <input type="number" min="0" name="count" required="required"/> <br><br>
+
+            <button type="submit" name="checksumm">Посчитать сумму</button>
+            <br><br> Сумма к оплате <?php $_SESSION['cart']['sum']; ?>
             <br><br>
         </form>
     </div>
@@ -35,4 +39,4 @@ if (!isset($_SESSION['cart'])) {
     echo cart_sum($_POST['count'], $_POST['price']);
 }*/
 echo '<pre>';
-
+//var_dump($_POST['product']);
