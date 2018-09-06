@@ -6,13 +6,26 @@ require_once "lib/products.php";
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = ['sum' => 0, 'items' => []];
 }
+
+$product = $_POST['product'];https://youtu.be/i99_PgElHhs?t=7438
+
+/*Вывод оишбок если товар или кол-во товара не было выбрано*/
+function errorsPost ($_POST['product']){
+
+}
+
+$errors = [];
 if (!empty($_POST)) {
     if (isset($_POST['product']) && $_POST['product'] != 0) {
         $product = $_POST['product'];
     } else {
-        echo 'Выберите товар';
+        $errors['product'] = 'Выберите товар <br>';
     }
-    //https://youtu.be/i99_PgElHhs?t=7336
+    if (isset($_POST['count']) && $_POST['count'] != 0) {
+        $product = $_POST['count'];
+    } else {
+        $errors['count'] = 'Выберите кол-во товара <br>';
+    }
 }
 
 

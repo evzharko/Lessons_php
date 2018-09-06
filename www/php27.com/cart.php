@@ -15,6 +15,7 @@ echo $_SESSION['login'];
     <div>
         <h1>Cart</h1>
         <form method="POST" action="">
+            <?php echo $errors['product']; ?>
             <select name="product">
                 <option value="0">Вберите товар</option>
                 <option value="1">Ботинки</option>
@@ -23,7 +24,6 @@ echo $_SESSION['login'];
             </select><br><br>
             Кол-во товара<br>
             <input type="number" min="0" name="count" required="required"/> <br><br>
-
             <button type="submit" name="checksumm">Посчитать сумму</button>
             <br><br> Сумма к оплате <?php $_SESSION['cart']['sum']; ?>
             <br><br>
