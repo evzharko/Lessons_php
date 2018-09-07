@@ -1,5 +1,5 @@
 <?php
-require_once "function/fun_cart.php";
+require_once "fun_cart.php";
 echo $_SESSION['login'];
 
 
@@ -22,10 +22,14 @@ echo $_SESSION['login'];
                 <option value="2">Шлепки</option>
                 <option value="3">Плавки</option>
             </select><br><br>
+            <?php echo $errors['count']; ?>
             Кол-во товара<br>
             <input type="number" min="0" name="count" required="required"/> <br><br>
-            <button type="submit" name="checksumm">Посчитать сумму</button>
-            <br><br> Сумма к оплате <?php $_SESSION['cart']['sum']; ?>
+            <button type="submit" name="checksumm">Посчитать сумму</button><br><br>
+                <?php foreach ($_SESSION['cart']['items'] as $items) {
+                    echo '<tr><td>'.$items['name'].'</td><td>'.$items['count'].'</td></tr>'.'<br>';
+                };?>
+            <br><br> Сумма к оплате <?php echo $_SESSION['cart']['sum']; ?>
             <br><br>
         </form>
     </div>
@@ -35,8 +39,15 @@ echo $_SESSION['login'];
 
 <?php
 
+/*
+<?php
+            foreach ($_SESSION['cart']['items'] as $items) {
+                echo $items['name'];
+            };
+            ?>
+*/
 /*if (isset($_POST['submit'])) {
     echo cart_sum($_POST['count'], $_POST['price']);
 }*/
 echo '<pre>';
-//var_dump($_POST['product']);
+//var_dump($_SESSION['cart']['items']);
