@@ -44,8 +44,8 @@ if (!empty($_POST)) {
         $_SESSION['cart']['sum'] += $product['coast'] * $count;
         $_SESSION['cart']['items'][] = ['name' => $product['name'], 'count' => $count];
     }
-    echo '<pre>';
-    var_dump(['name' => $product['name'], 'count' => $count]);
+    /*echo '<pre>';
+    var_dump($_POST);*/
 
 }
 //var_dump($_SESSION['cart']['items']);
