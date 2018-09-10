@@ -1,7 +1,7 @@
 <?php
 require_once "fun_cart.php";
 echo $_SESSION['login'];
-
+$count = [];
 
 ?>
     <html xmlns="http://www.w3.org/1999/html">
@@ -26,9 +26,16 @@ echo $_SESSION['login'];
             Кол-во товара<br>
             <input type="number" min="0" name="count" required="required"/> <br><br>
             <button type="submit" name="checksumm">Посчитать сумму</button><br><br>
-                <?php foreach ($_SESSION['cart']['items'] as $items) {
-                    echo '<tr><td>'.$items['name'].'</td><td>'.$items['count'].'</td></tr>'.'<br>';
+            <?php foreach ($_SESSION['cart']['items'] as $items) {
+                $count[$items['name']] += $items['count'];
+                echo '<tr><td>'.$items['name'].'</td><td>'.$items['count'].'</td></tr>'.'<br>';
+            };?>
+            <br><br> Количество обуви:
+            <table>
+                <?php foreach ($count as $key => $keyCount) {
+                    echo '<tr><td>'.$key.'</td><td>'.$keyCount.'</td></tr>'.'<br>';
                 };?>
+            </table>
             <br><br> Сумма к оплате <?php echo $_SESSION['cart']['sum']; ?>
             <br><br>
         </form>
@@ -38,7 +45,30 @@ echo $_SESSION['login'];
     </html>
 
 <?php
+/*$orders = [
+    [
+        'name' => 'Ботинки',
+        'count' => 5
+    ],
+    [
+        'name' => 'Шлепки',
+        'count' => 2
+    ],
+    [
+        'name' => 'Ботинки',
+        'count' => 4
+    ],
+];
 
+$count['Ботинки'] += 5;
+$count['Шлепки'] += 2;
+$count['Ботинки'] += 4;
+
+$count = [
+        'Ботинки' => 9,
+        'Шлепки' => 2
+
+]*/;
 /*
 <?php
             foreach ($_SESSION['cart']['items'] as $items) {
