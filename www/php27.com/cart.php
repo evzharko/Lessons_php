@@ -28,7 +28,6 @@ $count = [];
             <button type="submit" name="checksumm">Посчитать сумму</button><br><br>
             <?php foreach ($_SESSION['cart']['items'] as $items) {
                 $count[$items['name']] += $items['count'];
-                echo '<tr><td>'.$items['name'].'</td><td>'.$items['count'].'</td></tr>'.'<br>';
             };?>
             <br><br> Количество обуви:
             <table>

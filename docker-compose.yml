@@ -34,4 +34,4 @@ services:
         # задаем пароль для root пользователя
         environment:
             MYSQL_ROOT_PASSWORD: password
-            MYSQL_DATABASE: belka
+            MYSQL_DATABASE: php27
