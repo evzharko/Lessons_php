@@ -18,8 +18,18 @@ CREATE UNIQUE INDEX products_id_uindex ON products (id);
 ALTER TABLE products ADD new_column int NULL;
 
 /*Добавить товар в админку*/
-INSERT INTO `php27`.`products` (`short_name`, `full_name`, `lable`, `price`, `old_price`, `img`, `date_create`)
-
-VALUES ('hype grey shirt', 'hype grey shirt', 'NULL', 19.50, 0, 'images/product_2.jpg', NOW())
-    VALUES ('long sleeve jacket', 'long sleeve jacket', 'NULL', 32.20, 0, 'images/product_3.jpg', NOW()),
-    VALUES ('denim men shirt', 'denim men shirt', 'NULL', 59.90, 0, 'images/product_4.jpg', NOW());
+CREATE TABLE php27.products
+(
+  id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  short_name varchar(200),
+  full_name varchar(200),
+  lable varchar(20),
+  price int(11) NOT NULL,
+  old_price int(11) NOT NULL,
+  img varchar(255),
+  create_date date
+);
+CREATE UNIQUE INDEX products_id_uindex ON php27.products (id);
+INSERT INTO php27.products (id, short_name, full_name, lable, price, old_price, img, create_date) VALUES (1, 'hype grey shirt', 'hype grey shirt', 'NULL', 20, 0, 'product_2.jpg', '2018-09-11');
+INSERT INTO php27.products (id, short_name, full_name, lable, price, old_price, img, create_date) VALUES (2, 'long sleeve jacket', 'long sleeve jacket', 'NULL', 32, 0, 'product_3.jpg', '2018-09-11');
+INSERT INTO php27.products (id, short_name, full_name, lable, price, old_price, img, create_date) VALUES (3, 'denim men shirt', 'denim men shirt', 'NULL', 60, 0, 'product_4.jpg', '2018-09-11');

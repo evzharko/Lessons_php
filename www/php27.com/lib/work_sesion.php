@@ -4,4 +4,6 @@ session_start();
 
 $login = $_POST['login'];
 
-$_SESSION['login'] = $login;
+if ($login) {
+    $_SESSION['login'] = $login;
+}
