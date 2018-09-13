@@ -1,6 +1,40 @@
 <?php
 
+if (isset($_POST['add_to_card']))
+{
+    if (isset($_SESSION['shopp ing_cart']))
+    {
+        $item_array_id = array_column($_SESSION['shoping_cart'], "item_id");
+        if (!in_array($_GET['id'], $item_array_id))
+        {
+            $count = count($_SESSION['shoping_cart']);
+            $item_array =
+                [
+                    'item_id' => $_GET['id'],
+                    'item_name' => $_GET['name'],
+                    'item_price' => $_GET['product_price'],
+                    'item_quantity' => $_GET['quantity']
+                ];
+            $_SESSION['shoping_cart']['count'] = $item_array;
+        } else
+        {
+            echo '<script>alert("Item already added")</script>';
+            echo '<script>window.location="index.php"</script>';
+        }
+    } else {
+        $item_array =
+            [
+                'item_id' => $_GET['id'],
+                'item_name' => $_GET['name'],
+                'item_price' => $_GET['product_price'],
+                'item_quantity' => $_GET['quantity']
+            ];
+        $_SESSION['shoping_cart'][0] = $item_array;
+    }
+}
 
+
+/*
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = ['sum' => 0, 'items' => []];
 }
@@ -18,19 +52,14 @@ if (!empty($_GET)) {
 
     } else {
         $errors['count'] = 'Выберите кол-во товара <br>';
-    }*/
-    if (empty($errors)) {
-        $product = $products1[$product];
-        $_SESSION['cart']['sum'] += $product['coast'] * $count;
-        $_SESSION['cart']['items'][] = ['name' => $product['name'], 'count' => $count];
     }
-    /*echo '<pre>';
-    var_dump($_POST);*/
-
-}
-echo "<pre>";
-var_dump($_GET['add_cart']);
-
+if (empty($errors)) {
+    $product = $products1[$product];
+    $_SESSION['cart']['sum'] += $product['coast'] * $count;
+    $_SESSION['cart']['items'][] = ['name' => $product['name'], 'count' => $count];
+}*/
+/*echo '<pre>';
+var_dump($_POST);*/
 
 
 /*

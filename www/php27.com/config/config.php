@@ -21,6 +21,12 @@ $stmt = $db27->query($sql);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 
+/*Вывод айдишки товара */
+$id = "SELECT id FROM products";
+
+$id = $db27->query($id);
+$id->setFetchMode(PDO::FETCH_ASSOC);
+
 /*function query()
 {
 

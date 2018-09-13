@@ -1,7 +1,6 @@
 <?php
 require_once 'config/config.php';
 require_once 'add_cart.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +17,9 @@ require_once 'add_cart.php';
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" type="text/css" href="styles/categories.css">
-    <link rel="stylesheet" type="text/css" href="styles/categories.css">
     <link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
 </head>
+<body>
 <body>
 
 <div class="super_container">
@@ -407,278 +406,270 @@ require_once 'add_cart.php';
         <div class="section_container">
             <div class="container">
                 <div class="row">
+                    <?php foreach ($stmt as $item): ?>
+                        <form method="post" action="index.php?action=add&id=<?= $item['id']; ?>">
+                            <div class="product_image"><img src="images/<?= $item['img'];?>" alt=""></div>
+                            <div class="product_content text-center">
+                                <div class="product_title"><a href="product.html"><?= $item['short_name'];?></a></div>
+                                <input type="text" name="quantity" value="1">
+                                <div class="product_price">$<?= $item['price'];?></div>
+                                <input type="hidden" name="hidden_name" value="<?= $item['short_name'];?>"/>
+                                <input type="hidden" name="hidden_price" value="<?= $item['price'];?>"/>
+                                <input type="submit" name="add_to_card" class="product_button ml-auto mr-auto trans_200" value="Add to cart"/>
+                            </div>
+                        </form>
+                <?php endforeach; ?>
+                <?php var_dump($item['id']);?>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Newsletter -->
+
+<div class="newsletter">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/newsletter.jpg"
+         data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="newsletter_content text-center">
+                    <div class="newsletter_title_container">
+                        <div class="newsletter_title">subscribe to our newsletter</div>
+                        <div class="newsletter_subtitle">we won't spam, we promise!</div>
+                    </div>
+                    <div class="newsletter_form_container">
+                        <form action="#" id="newsletter_form" class="newsletter_form">
+                            <input type="email" class="newsletter_input" placeholder="your e-mail here"
+                                   required="required">
+                            <button class="newsletter_button">submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+
+<footer class="footer">
+    <div class="footer_content">
+        <div class="section_container">
+            <div class="container">
+                <div class="row">
+
+                    <!-- About -->
+                    <div class="col-xxl-3 col-md-6 footer_col">
+                        <div class="footer_about">
+                            <!-- Logo -->
+                            <div class="footer_logo">
+                                <a href="#">
+                                    <div>a<span>star</span></div>
+                                </a>
+                            </div>
+                            <div class="footer_about_text">
+                                <p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam
+                                    fringilla faucibus urna, id dapibus erat iaculis ut. Integer ac sem.</p>
+                            </div>
+                            <div class="cards">
+                                <ul class="d-flex flex-row align-items-center justify-content-start">
+                                    <li><a href="#"><img src="images/card_1.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="images/card_2.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="images/card_3.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="images/card_4.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="images/card_5.jpg" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Questions -->
+                    <div class="col-xxl-3 col-md-6 footer_col">
+                        <div class="footer_questions">
+                            <div class="footer_title">questions</div>
+                            <div class="footer_list">
+                                <ul>
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Track Orders</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Partners</a></li>
+                                    <li><a href="#">Bloggers</a></li>
+                                    <li><a href="#">Support</a></li>
+                                    <li><a href="#">Terms of Use</a></li>
+                                    <li><a href="#">Press</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog -->
+                    <div class="col-xxl-3 col-md-6 footer_col">
+                        <div class="footer_blog">
+                            <div class="footer_title">blog</div>
+                            <div class="footer_blog_container">
+
+                                <!-- Blog Item -->
+                                <div class="footer_blog_item d-flex flex-row align-items-start justify-content-start">
+                                    <div class="footer_blog_image"><a href="blog.html"><img
+                                                    src="images/footer_blog_1.jpg" alt=""></a></div>
+                                    <div class="footer_blog_content">
+                                        <div class="footer_blog_title"><a href="blog.html">what shoes to wear</a>
+                                        </div>
+                                        <div class="footer_blog_date">june 06, 2018</div>
+                                        <div class="footer_blog_link"><a href="blog.html">Read More</a></div>
+                                    </div>
+                                </div>
+
+                                <!-- Blog Item -->
+                                <div class="footer_blog_item d-flex flex-row align-items-start justify-content-start">
+                                    <div class="footer_blog_image"><a href="blog.html"><img
+                                                    src="images/footer_blog_2.jpg" alt=""></a></div>
+                                    <div class="footer_blog_content">
+                                        <div class="footer_blog_title"><a href="blog.html">trends this year</a>
+                                        </div>
+                                        <div class="footer_blog_date">june 06, 2018</div>
+                                        <div class="footer_blog_link"><a href="blog.html">Read More</a></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="col-xxl-3 col-md-6 footer_col">
+                        <div class="footer_contact">
+                            <div class="footer_title">contact</div>
+                            <div class="footer_contact_list">
+                                <ul>
+                                    <li class="d-flex flex-row align-items-start justify-content-start">
+                                        <span>C.</span>
+                                        <div>Your Company Ltd</div>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-start justify-content-start">
+                                        <span>A.</span>
+                                        <div>1481 Creekside Lane Avila Beach, CA 93424, P.O. BOX 68</div>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-start justify-content-start">
+                                        <span>T.</span>
+                                        <div>+53 345 7953 32453</div>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-start justify-content-start">
+                                        <span>E.</span>
+                                        <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                data-cfemail="6f000909060c0a2f16001a1d0a020e0603410c0002">[email&#160;protected]</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social -->
+    <div class="footer_social">
+        <div class="section_container">
+            <div class="container">
+                <div class="row">
                     <div class="col">
-                        <div class="products_container grid">
-
-                            <!-- Product -->
-                            <?php foreach ($stmt as $item): ?>
-                                <div class="product grid-item hot">
-                                    <div class="product_inner">
-                                        <div class="product_image">
-                                            <img src="<?= $item['img'];?>" alt="">
-                                            <div class="product_tag"><?= $item['lable'];?></div>
-                                        </div>
-                                        <div class="product_content text-center">
-                                            <div class="product_title"><a href="product.html"><?= $item['short_name']; ?></a></div>
-                                            <div class="product_price">$<?= $item['price']; ?></div>
-                                            <div class="product_button ml-auto mr-auto trans_200"><a href="?add_cart=<?= $item['id']; ?>">add to cart</a></div>
-                                        </div>
-
-                                    </div>
+                        <div class="footer_social_container d-flex flex-row align-items-center justify-content-between">
+                            <!-- Instagram -->
+                            <a href="#">
+                                <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
+                                    <div class="footer_social_icon"><i class="fa fa-instagram"
+                                                                       aria-hidden="true"></i></div>
+                                    <div class="footer_social_title">instagram</div>
                                 </div>
-                            <?php endforeach; ?>
-
+                            </a>
+                            <!-- Google + -->
+                            <a href="#">
+                                <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
+                                    <div class="footer_social_icon"><i class="fa fa-google-plus"
+                                                                       aria-hidden="true"></i></div>
+                                    <div class="footer_social_title">google +</div>
+                                </div>
+                            </a>
+                            <!-- Pinterest -->
+                            <a href="#">
+                                <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
+                                    <div class="footer_social_icon"><i class="fa fa-pinterest"
+                                                                       aria-hidden="true"></i></div>
+                                    <div class="footer_social_title">pinterest</div>
+                                </div>
+                            </a>
+                            <!-- Facebook -->
+                            <a href="#">
+                                <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
+                                    <div class="footer_social_icon"><i class="fa fa-facebook"
+                                                                       aria-hidden="true"></i></div>
+                                    <div class="footer_social_title">facebook</div>
+                                </div>
+                            </a>
+                            <!-- Twitter -->
+                            <a href="#">
+                                <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
+                                    <div class="footer_social_icon"><i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="footer_social_title">twitter</div>
+                                </div>
+                            </a>
+                            <!-- YouTube -->
+                            <a href="#">
+                                <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
+                                    <div class="footer_social_icon"><i class="fa fa-youtube" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="footer_social_title">youtube</div>
+                                </div>
+                            </a>
+                            <!-- Tumblr -->
+                            <a href="#">
+                                <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
+                                    <div class="footer_social_icon"><i class="fa fa-tumblr-square"
+                                                                       aria-hidden="true"></i></div>
+                                    <div class="footer_social_title">tumblr</div>
+                                </div>
+                            </a>
                         </div>
-                        <?php echo $prod; ?>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- Newsletter -->
-
-    <div class="newsletter">
-        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/newsletter.jpg"
-             data-speed="0.8"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="newsletter_content text-center">
-                        <div class="newsletter_title_container">
-                            <div class="newsletter_title">subscribe to our newsletter</div>
-                            <div class="newsletter_subtitle">we won't spam, we promise!</div>
-                        </div>
-                        <div class="newsletter_form_container">
-                            <form action="#" id="newsletter_form" class="newsletter_form">
-                                <input type="email" class="newsletter_input" placeholder="your e-mail here"
-                                       required="required">
-                                <button class="newsletter_button">submit</button>
-                            </form>
+    <!-- Credits -->
+    <div class="credits">
+        <div class="section_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="credits_content d-flex flex-row align-items-center justify-content-end">
+                            <div class="credits_text">
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script data-cfasync="false"
+                                                        src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                                <script>document.write(new Date().getFullYear());</script>
+                                All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                                    aria-hidden="true"></i> by <a
+                                        href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-
-    <footer class="footer">
-        <div class="footer_content">
-            <div class="section_container">
-                <div class="container">
-                    <div class="row">
-
-                        <!-- About -->
-                        <div class="col-xxl-3 col-md-6 footer_col">
-                            <div class="footer_about">
-                                <!-- Logo -->
-                                <div class="footer_logo">
-                                    <a href="#">
-                                        <div>a<span>star</span></div>
-                                    </a>
-                                </div>
-                                <div class="footer_about_text">
-                                    <p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam
-                                        fringilla faucibus urna, id dapibus erat iaculis ut. Integer ac sem.</p>
-                                </div>
-                                <div class="cards">
-                                    <ul class="d-flex flex-row align-items-center justify-content-start">
-                                        <li><a href="#"><img src="images/card_1.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="images/card_2.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="images/card_3.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="images/card_4.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="images/card_5.jpg" alt=""></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Questions -->
-                        <div class="col-xxl-3 col-md-6 footer_col">
-                            <div class="footer_questions">
-                                <div class="footer_title">questions</div>
-                                <div class="footer_list">
-                                    <ul>
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">Track Orders</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">Jobs</a></li>
-                                        <li><a href="#">Shipping</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Partners</a></li>
-                                        <li><a href="#">Bloggers</a></li>
-                                        <li><a href="#">Support</a></li>
-                                        <li><a href="#">Terms of Use</a></li>
-                                        <li><a href="#">Press</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Blog -->
-                        <div class="col-xxl-3 col-md-6 footer_col">
-                            <div class="footer_blog">
-                                <div class="footer_title">blog</div>
-                                <div class="footer_blog_container">
-
-                                    <!-- Blog Item -->
-                                    <div class="footer_blog_item d-flex flex-row align-items-start justify-content-start">
-                                        <div class="footer_blog_image"><a href="blog.html"><img
-                                                        src="images/footer_blog_1.jpg" alt=""></a></div>
-                                        <div class="footer_blog_content">
-                                            <div class="footer_blog_title"><a href="blog.html">what shoes to wear</a>
-                                            </div>
-                                            <div class="footer_blog_date">june 06, 2018</div>
-                                            <div class="footer_blog_link"><a href="blog.html">Read More</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Blog Item -->
-                                    <div class="footer_blog_item d-flex flex-row align-items-start justify-content-start">
-                                        <div class="footer_blog_image"><a href="blog.html"><img
-                                                        src="images/footer_blog_2.jpg" alt=""></a></div>
-                                        <div class="footer_blog_content">
-                                            <div class="footer_blog_title"><a href="blog.html">trends this year</a>
-                                            </div>
-                                            <div class="footer_blog_date">june 06, 2018</div>
-                                            <div class="footer_blog_link"><a href="blog.html">Read More</a></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Contact -->
-                        <div class="col-xxl-3 col-md-6 footer_col">
-                            <div class="footer_contact">
-                                <div class="footer_title">contact</div>
-                                <div class="footer_contact_list">
-                                    <ul>
-                                        <li class="d-flex flex-row align-items-start justify-content-start">
-                                            <span>C.</span>
-                                            <div>Your Company Ltd</div>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-start justify-content-start">
-                                            <span>A.</span>
-                                            <div>1481 Creekside Lane Avila Beach, CA 93424, P.O. BOX 68</div>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-start justify-content-start">
-                                            <span>T.</span>
-                                            <div>+53 345 7953 32453</div>
-                                        </li>
-                                        <li class="d-flex flex-row align-items-start justify-content-start">
-                                            <span>E.</span>
-                                            <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                    data-cfemail="6f000909060c0a2f16001a1d0a020e0603410c0002">[email&#160;protected]</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Social -->
-        <div class="footer_social">
-            <div class="section_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="footer_social_container d-flex flex-row align-items-center justify-content-between">
-                                <!-- Instagram -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-instagram"
-                                                                           aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">instagram</div>
-                                    </div>
-                                </a>
-                                <!-- Google + -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-google-plus"
-                                                                           aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">google +</div>
-                                    </div>
-                                </a>
-                                <!-- Pinterest -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-pinterest"
-                                                                           aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">pinterest</div>
-                                    </div>
-                                </a>
-                                <!-- Facebook -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-facebook"
-                                                                           aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">facebook</div>
-                                    </div>
-                                </a>
-                                <!-- Twitter -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-twitter" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="footer_social_title">twitter</div>
-                                    </div>
-                                </a>
-                                <!-- YouTube -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-youtube" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="footer_social_title">youtube</div>
-                                    </div>
-                                </a>
-                                <!-- Tumblr -->
-                                <a href="#">
-                                    <div class="footer_social_item d-flex flex-row align-items-center justify-content-start">
-                                        <div class="footer_social_icon"><i class="fa fa-tumblr-square"
-                                                                           aria-hidden="true"></i></div>
-                                        <div class="footer_social_title">tumblr</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Credits -->
-        <div class="credits">
-            <div class="section_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="credits_content d-flex flex-row align-items-center justify-content-end">
-                                <div class="credits_text">
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script data-cfasync="false"
-                                                            src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                                    <script>document.write(new Date().getFullYear());</script>
-                                    All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                                                                        aria-hidden="true"></i> by <a
-                                            href="https://colorlib.com" target="_blank">Colorlib</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+</footer>
 
 </div>
 
