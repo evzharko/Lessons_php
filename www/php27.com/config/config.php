@@ -1,6 +1,6 @@
 <?php
 /* В этом файле производим подключение к базе данных*/
-
+require_once 'work_sesion.php';
 // Подклчюение к базе данных
 $host = 'mysql';
 $database = 'php27';
@@ -15,14 +15,11 @@ try {
 }
 
 
-sql = "SELECT * FROM products";
+$sql = "SELECT * FROM products";
 
 $stmt = $db27->query($sql);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-foreach ($stmt as $item) {
-    echo '<pre>' . $item['short_name'];
-}
 
 /*function query()
 {

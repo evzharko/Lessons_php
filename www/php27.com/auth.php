@@ -1,6 +1,6 @@
 <?php
 
-require_once "function/fun_cart.php";
+require_once "function/add_cart.php";
 //echo $_SESSION['login'];
 
 ?>

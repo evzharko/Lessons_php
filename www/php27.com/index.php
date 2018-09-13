@@ -1,3 +1,9 @@
+<?php
+require_once 'config/config.php';
+require_once 'add_cart.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="styles/categories.css">
     <link rel="stylesheet" type="text/css" href="styles/categories.css">
     <link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
 </head>
@@ -404,28 +411,30 @@
                         <div class="products_container grid">
 
                             <!-- Product -->
-                            <div class="product grid-item hot">
-                                <div class="product_inner">
-                                    <div class="product_image">
-                                        <img src="images/product_1.jpg" alt="">
-                                        <div class="product_tag">hot</div>
-                                    </div>
-                                    <div class="product_content text-center">
-                                        <div class="product_title"><a href="product.html">long red shirt</a></div>
-                                        <div class="product_price">$39.90</div>
-                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
-                                                cart</a></div>
+                            <?php foreach ($stmt as $item): ?>
+                                <div class="product grid-item hot">
+                                    <div class="product_inner">
+                                        <div class="product_image">
+                                            <img src="<?= $item['img'];?>" alt="">
+                                            <div class="product_tag"><?= $item['lable'];?></div>
+                                        </div>
+                                        <div class="product_content text-center">
+                                            <div class="product_title"><a href="product.html"><?= $item['short_name']; ?></a></div>
+                                            <div class="product_price">$<?= $item['price']; ?></div>
+                                            <div class="product_button ml-auto mr-auto trans_200"><a href="?add_cart=<?= $item['id']; ?>">add to cart</a></div>
+                                        </div>
+
                                     </div>
                                 </div>
-                            </div>
-
-
+                            <?php endforeach; ?>
 
                         </div>
+                        <?php echo $prod; ?>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- Newsletter -->

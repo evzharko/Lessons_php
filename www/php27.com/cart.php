@@ -1,5 +1,5 @@
 <?php
-require_once "fun_cart.php";
+require_once "add_cart.php";
 echo $_SESSION['login'];
 $count = [];
 

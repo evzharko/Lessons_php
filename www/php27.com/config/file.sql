@@ -24,8 +24,8 @@ CREATE TABLE php27.products
   short_name varchar(200),
   full_name varchar(200),
   lable varchar(20),
-  price int(11) NOT NULL,
-  old_price int(11) NOT NULL,
+  price float NOT NULL,
+  old_price float NOT NULL,
   img varchar(255),
   create_date date
 );
