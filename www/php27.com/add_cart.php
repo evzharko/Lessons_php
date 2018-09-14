@@ -2,20 +2,20 @@
 
 if (isset($_POST['add_to_card']))
 {
-    if (isset($_SESSION['shopp ing_cart']))
+    if (isset($_SESSION['shopping_cart']))
     {
-        $item_array_id = array_column($_SESSION['shoping_cart'], "item_id");
+        $item_array_id = array_column($_SESSION['shopping_cart'], "item_id");
         if (!in_array($_GET['id'], $item_array_id))
         {
-            $count = count($_SESSION['shoping_cart']);
+            $count = count($_SESSION['shopping_cart']);
             $item_array =
                 [
                     'item_id' => $_GET['id'],
-                    'item_name' => $_GET['name'],
-                    'item_price' => $_GET['product_price'],
-                    'item_quantity' => $_GET['quantity']
+                    'item_name' => $_POST['hidden_name'],
+                    'item_price' => $_POST['hidden_price'],
+                    'item_quantity' => $_POST['quantity']
                 ];
-            $_SESSION['shoping_cart']['count'] = $item_array;
+            $_SESSION['shopping_cart']['count'] = $item_array;
         } else
         {
             echo '<script>alert("Item already added")</script>';
@@ -25,11 +25,11 @@ if (isset($_POST['add_to_card']))
         $item_array =
             [
                 'item_id' => $_GET['id'],
-                'item_name' => $_GET['name'],
-                'item_price' => $_GET['product_price'],
-                'item_quantity' => $_GET['quantity']
+                'item_name' => $_POST['hidden_name'],
+                'item_price' => $_POST['hidden_price'],
+                'item_quantity' => $_POST['quantity']
             ];
-        $_SESSION['shoping_cart'][0] = $item_array;
+        $_SESSION['shopping_cart'][0] = $item_array;
     }
 }
 

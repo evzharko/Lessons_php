@@ -1,6 +1,6 @@
 <?php
 /* В этом файле производим подключение к базе данных*/
-require_once 'work_sesion.php';
+//require_once 'work_sesion.php';
 // Подклчюение к базе данных
 $host = 'mysql';
 $database = 'php27';
