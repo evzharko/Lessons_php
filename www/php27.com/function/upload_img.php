@@ -59,7 +59,7 @@ $mime = (string) finfo_file($finfo, $tmp_name);
 if (strpos($mime, 'image') === false)
     die ('Это не изображение');
 
-// Переместим картинку с новым именем и расширением в папку /pics
+// Переместим картинку с новым именем и расширением в папку /files
 if (is_dir($uploaddir))
 {
     if (move_uploaded_file($tmp_name, "$uploaddir/$new_file_name"))

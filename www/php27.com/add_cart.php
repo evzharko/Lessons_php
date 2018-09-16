@@ -1,35 +1,58 @@
 <?php
+//После первого удаления товара в масим больше двух товаров не добавляется.
 
 if (isset($_POST['add_to_card']))
 {
     if (isset($_SESSION['shopping_cart']))
     {
-        $item_array_id = array_column($_SESSION['shopping_cart'], "item_id");
+        $count = ($_GET['id']);
+        $item_array_id = array_column($_SESSION['shopping_cart'], 'item_id'); // Берем айди товара с масива если корзина существует.
         if (!in_array($_GET['id'], $item_array_id))
         {
-            $count = count($_SESSION['shopping_cart']);
+
+
             $item_array =
                 [
-                    'item_id' => $_GET['id'],
-                    'item_name' => $_POST['hidden_name'],
-                    'item_price' => $_POST['hidden_price'],
-                    'item_quantity' => $_POST['quantity']
+                    'item_id'        => $_GET['id'],
+                    'item_name'      => $_POST['hidden_name'],
+                    'item_price'     => $_POST['hidden_price'],
+                    'item_quantity'  => $_POST['hidden_quantity']
                 ];
-            $_SESSION['shopping_cart']['count'] = $item_array;
+            $_SESSION['shopping_cart'][$count] = $item_array;
         } else
         {
-            echo '<script>alert("Item already added")</script>';
+//  Если товар в корзине выполянем дейсвия (сейчас говорим, что товар уже добавлен)
+//  Нужно сделать чтобы кол-во добавляллось к уже существующему кол-ву.
+            //echo '<script>alert("Item Already Item")</script>';
             echo '<script>window.location="index.php"</script>';
         }
-    } else {
+    } else // Если корзина не создана
+    {
+
         $item_array =
             [
-                'item_id' => $_GET['id'],
-                'item_name' => $_POST['hidden_name'],
-                'item_price' => $_POST['hidden_price'],
-                'item_quantity' => $_POST['quantity']
+                'item_id'        => $_GET['id'],
+                'item_name'      => $_POST['hidden_name'],
+                'item_price'     => $_POST['hidden_price'],
+                'item_quantity'  => $_POST['hidden_quantity']
             ];
-        $_SESSION['shopping_cart'][0] = $item_array;
+        $_SESSION['shopping_cart'][$count] = $item_array;
+    }
+}
+
+if (isset($_GET['action']))
+{
+    if ($_GET['action'] == 'delete')
+    {
+        foreach ($_SESSION['shopping_cart'] as $key => $item)
+        {
+            if ($item['item_id'] == $_GET['id'])
+            {
+                unset($_SESSION['shopping_cart'][$key]);
+                //echo '<script>alert("Item Removed ")</script>';
+                echo '<script>window.location="index.php"</script>';
+            }
+        }
     }
 }
 
