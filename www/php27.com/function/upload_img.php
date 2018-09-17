@@ -43,8 +43,11 @@ if ($_FILES['upload_avatart'])
         $unknownMessage = 'При загрузке файла произошла неизвестная ошибка.';
 
         // Если в массиве нет кода ошибки, скажем, что ошибка неизвестна
-        $outputMessage = isset($errorMessages[$errorCode]) ? $errorMessages[$errorCode] : $unknownMessage;
-
+        //$outputMessage = isset($errorMessages[$errorCode]) ? $errorMessages[$errorCode] : $unknownMessage;
+        if (isset($errorMessages[$errorCode]))
+        {
+            $outputMessage = $unknownMessage;
+        }
         // Выведем название ошибки
 
         var_dump($_FILES);
