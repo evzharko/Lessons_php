@@ -12,6 +12,8 @@ require_once 'function/upload_img.php'
 <form method="post" enctype="multipart/form-data">
     <input type="file" name='upload_avatart'>
     <button>Загрузить фото</button>
+    <pre>
+        <?php var_dump($_FILES);?>
 </form>
 </body>
 </html>
