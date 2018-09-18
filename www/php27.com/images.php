@@ -13,7 +13,6 @@ require_once 'function/upload_img.php'
     <input type="file" name='upload_avatart'>
     <button>Загрузить фото</button>
     <pre>
-        <?php var_dump($_FILES);?>
 </form>
 </body>
 </html>

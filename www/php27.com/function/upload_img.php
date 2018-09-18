@@ -22,6 +22,18 @@ $uploaddir = './uploads/files/';
 $nowdate = date('Ymdhm');
 // Сохраням файл в паке с сгенерированым именем
 $new_file_name = $nowdate . '.' . $get_type;
+// Полный путь сохраненной картинки
+$save_img_path = $uploaddir.$new_file_name;
+
+// Переменные для размеров картинок 600х200, 100х100, 200х200
+$new_width_100 = 100;
+$new_height_100 = 100;
+
+$new_width_200 = 200;
+$new_height_200 = 200;
+
+$new_width_600 = 600;
+$new_height_600 = 600;
 
 // Проверим на ошибки
 if ($_FILES['upload_avatart'])
@@ -88,6 +100,7 @@ if ($_FILES['upload_avatart'])
         if (move_uploaded_file($tmp_name, "$uploaddir/$new_file_name"))
         {
             echo 'Файл успешно загружен на сервер.';
+           // var_dump(getimagesize($save_img_path));
         } else
         {
             echo 'Не удалось записать файл на диск.';
@@ -99,6 +112,9 @@ if ($_FILES['upload_avatart'])
         if (move_uploaded_file($tmp_name, "$uploaddir/$new_file_name"))
         {
             echo 'Файл успешно загружен на сервер.';
+            //$image_size = getimagesize('$uploaddir/$new_file_name');
+            var_dump(getimagesize('$uploaddir/$new_file_name'));
+            echo 'Измененеия размера';
         } else
         {
             echo 'Не удалось записать файл на диск.';
@@ -106,9 +122,4 @@ if ($_FILES['upload_avatart'])
     }
 }
 
-
 //Изменяем размер картинки
-//$image_resize = new Imagick($new_file_name);
-//$image_resize->adaptiveResizeImage(1024,768);
-
-//echo $image_resize;
