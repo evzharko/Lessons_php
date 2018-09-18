@@ -15,14 +15,6 @@ $uploaddir = './uploads/files';
 $nowdate = date('Ymdhm');
 
 // Переменные для размеров картинок 600х200, 100х100, 200х200
-$new_width_100 = 100;
-$new_height_100 = 100;
-
-$new_width_200 = 200;
-$new_height_200 = 200;
-
-$new_width_600 = 600;
-$new_height_600 = 600;
 
 // Проверим на ошибки
 if (isset($_FILES['upload_avatart']))
@@ -100,70 +92,61 @@ if (isset($_FILES['upload_avatart']))
 {
     if (is_dir($uploaddir))
     {
-        if (move_uploaded_file($tmp_name, "$uploaddir/$new_file_name"))
-        {
-            echo 'Файл успешно загружен на сервер.';
-            chmod($save_img_path, 0777); // Назначаем права 777 на файл
-
-// TEST http://qaru.site/questions/249586/php-resize-image-on-upload
-            //http://php.net/manual/ru/imagick.adaptiveresizeimage.php
-            list($old_height,$old_width) = getimagesize($save_img_path); // Берем размеры существующей картинки
-            $quality=100; // Качество
-            $source=imagecreatefromjpeg($save_img_path);
-            //var_dump($old_height);
-            $thumbwidth=100;
-            $thumbheight=100;
-            $thumb=imagecreatetruecolor($thumbwidth,$thumbheight);
-            imagecopyresized($thumb,$source,0,0,0,0,$thumbwidth,$thumbheight,$old_width,$old_height);
-            imagejpeg($thumb,$uploaddir ."thumb_".$name.".jpg",$quality);
-            imagedestroy($thumb);
-            $message.="Создано изображение с именем thumb_" . $name . "jpg";
-            echo $message;
-
-
-// END TEST
-
-        } else
-        {
-            echo 'Не удалось записать файл на диск.';
-        }
+        move_file($tmp_name,$save_img_path);
     } else
     {
         mkdir($uploaddir); // Создаем папку на сервере
         chmod($uploaddir, 0777); // Назначаем права 777 на папку
-
-        if (move_uploaded_file($tmp_name, "$uploaddir/$new_file_name"))
-        {
-            echo 'Файл успешно загружен на сервер.';
-            chmod($save_img_path, 0777); // Назначаем права 777 на файл
-        } else
-        {
-            echo 'Не удалось записать файл на диск.';
-        }
+        move_file($tmp_name,$save_img_path);
     }
 }
 
-//Изменяем размер картинки
-/*if ($_POST['upload_avatart'])
+function move_file ($tmp_name, $uploaddir)
 {
-    echo 'test';
-    $im = '111.jpg';
-    list($old_width,$old_height) = getimagesize($save_img_path);
+    if (move_uploaded_file($tmp_name, "$uploaddir"))
+    {
+        echo 'Файл успешно загружен на сервер.';
+        chmod($uploaddir, 0777); // Назначаем права 777 на файл
+        uploadResizeImages(600,200);
 
-    $thumb = imagecreatetruecolor($new_width_100, $new_height_100);
-    $source = imagecreatefromjpeg($save_img_path);
-
-    imagecopyresized($thumb, $source, 0, 0, 0, 0, $new_width_100, $new_height_100, $old_width, $old_height);
-
-    echo '<pre> s';
-
-//imagejpeg($thumb);
-    move_uploaded_file($save_img_path, "$uploaddir/$im");
-var_dump ($thumb);
+    } else
+    {
+        echo 'Не удалось записать файл на диск.';
+    }
+}
 
 
+function uploadResizeImages ($width,$height)
+{
+    // Генерируем имя и путь откуда взять файл
+    $uploaddir = './uploads/files';
+    // Берем тип файла (jpeg, png, gif)
+    $file_name = pathinfo($_FILES['upload_avatart']['type']);
+    // Берем разширение файла
+    $get_type = $file_name['filename'];
+    // Генерим имя файла
+    $nowdate = date('Ymdhm');
+    // Сохраням файл в паке с сгенерированым именем
+    $new_file_name = $nowdate . '.' . $get_type;
+    $save_img_path = "$uploaddir/$new_file_name";
 
-//var_dump(list($old_width,$old_height) = getimagesize($save_img_path););
+    if ($width=100)
+    {
+        $new_file_name_thum = "$uploaddir/thum_100_$new_file_name"; // Задаем путь и новое имя для изображения
+    }
+    if ($width=200)
+    {
+        $new_file_name_thum = "$uploaddir/thum_200_$new_file_name"; // Задаем путь и новое имя для изображения
+    }
+    if ($width=600)
+    {
+        $new_file_name_thum = "$uploaddir/thum_600_$new_file_name"; // Задаем путь и новое имя для изображения
+    }
 
+    $images = new Imagick($save_img_path); //Создаем копию оригинала картинки
+    $images->adaptiveResizeImage($width,$height); // Задаем размер нового изображения
+    $images->writeImage($new_file_name_thum); // Сохраняем изображение с новым именем
+    $images->destroy();
+    chmod($new_file_name_thum, 0777); // Назначаем права 777 на файл
 
-}*/
+}
