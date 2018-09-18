@@ -105,23 +105,21 @@ if (isset($_FILES['upload_avatart']))
             echo 'Файл успешно загружен на сервер.';
             chmod($save_img_path, 0777); // Назначаем права 777 на файл
 
-// TEST
-            echo 'test';
-            $im = '111.jpg';
-            list($old_width,$old_height) = getimagesize($save_img_path);
+// TEST http://qaru.site/questions/249586/php-resize-image-on-upload
+            //http://php.net/manual/ru/imagick.adaptiveresizeimage.php
+            list($old_height,$old_width) = getimagesize($save_img_path); // Берем размеры существующей картинки
+            $quality=100; // Качество
+            $source=imagecreatefromjpeg($save_img_path);
+            //var_dump($old_height);
+            $thumbwidth=100;
+            $thumbheight=100;
+            $thumb=imagecreatetruecolor($thumbwidth,$thumbheight);
+            imagecopyresized($thumb,$source,0,0,0,0,$thumbwidth,$thumbheight,$old_width,$old_height);
+            imagejpeg($thumb,$uploaddir ."thumb_".$name.".jpg",$quality);
+            imagedestroy($thumb);
+            $message.="Создано изображение с именем thumb_" . $name . "jpg";
+            echo $message;
 
-            $thumb = imagecreatetruecolor($new_width_100, $new_height_100);
-            $source = imagecreatefromjpeg($save_img_path);
-
-            imagecopyresized($thumb, $source, 0, 0, 0, 0, $new_width_100, $new_height_100, $old_width, $old_height);
-
-            echo '<pre>';
-
-            header("Content-Type: image/jpg");  //говорим что у нас гиф картинка
-
-            imagejpeg($thumb);
-            move_uploaded_file($thumb, "$uploaddir/$im");
-            var_dump ($thumb);
 
 // END TEST
 
