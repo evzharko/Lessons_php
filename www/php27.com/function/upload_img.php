@@ -17,13 +17,13 @@ $get_type = $file_name['filename'];
 $errorCode = $_FILES['upload_avatart']['error'];
 
 // Путь куда сохранять картинки
-$uploaddir = './uploads/files/';
+$uploaddir = './uploads/files';
 // Генерим имя файла
 $nowdate = date('Ymdhm');
 // Сохраням файл в паке с сгенерированым именем
 $new_file_name = $nowdate . '.' . $get_type;
 // Полный путь сохраненной картинки
-$save_img_path = $uploaddir.$new_file_name;
+$save_img_path = "$uploaddir/$new_file_name";
 
 // Переменные для размеров картинок 600х200, 100х100, 200х200
 $new_width_100 = 100;
@@ -100,21 +100,21 @@ if ($_FILES['upload_avatart'])
         if (move_uploaded_file($tmp_name, "$uploaddir/$new_file_name"))
         {
             echo 'Файл успешно загружен на сервер.';
-           // var_dump(getimagesize($save_img_path));
+            chmod($save_img_path, 0777); // Назначаем права 777 на файл
+            //var_dump(getimagesize($save_img_path));
         } else
         {
             echo 'Не удалось записать файл на диск.';
         }
     } else
     {
-        mkdir($uploaddir);
+        mkdir($uploaddir); // Создаем папку на сервере
+        chmod($uploaddir, 0777); // Назначаем права 777 на папку
 
         if (move_uploaded_file($tmp_name, "$uploaddir/$new_file_name"))
         {
             echo 'Файл успешно загружен на сервер.';
-            //$image_size = getimagesize('$uploaddir/$new_file_name');
-            var_dump(getimagesize('$uploaddir/$new_file_name'));
-            echo 'Измененеия размера';
+            chmod($save_img_path, 0777); // Назначаем права 777 на файл
         } else
         {
             echo 'Не удалось записать файл на диск.';
@@ -123,3 +123,21 @@ if ($_FILES['upload_avatart'])
 }
 
 //Изменяем размер картинки
+$im = '111.jpg';
+list($old_width,$old_height) = getimagesize($save_img_path);
+
+$thumb = imagecreatetruecolor($new_width_100, $new_height_100);
+$source = imagecreatefromjpeg($save_img_path);
+
+imagecopyresized($thumb, $source, 0, 0, 0, 0, $new_width_100, $new_height_100, $old_width, $old_height);
+
+echo '<pre>';
+
+//imagejpeg($thumb);
+move_uploaded_file($save_img_path, "$uploaddir/$im");
+//var_dump(move_uploaded_file($thumb, "$uploaddir/$im"));
+
+
+
+//var_dump(list($old_width,$old_height) = getimagesize($save_img_path););
+
