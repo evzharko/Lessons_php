@@ -7,6 +7,8 @@
  *
  * */
 
+ini_set('display_errors', true);
+error_reporting(E_ALL);
 // Имя файла в временной папке
 $tmp_name = $_FILES['upload_avatart']['tmp_name'];
 // Берем тип файла (jpeg, png, gif)
@@ -123,21 +125,25 @@ if ($_FILES['upload_avatart'])
 }
 
 //Изменяем размер картинки
-$im = '111.jpg';
-list($old_width,$old_height) = getimagesize($save_img_path);
+if ($_POST['upload_avatart'])
+{
+    $im = '111.jpg';
+    list($old_width,$old_height) = getimagesize($save_img_path);
 
-$thumb = imagecreatetruecolor($new_width_100, $new_height_100);
-$source = imagecreatefromjpeg($save_img_path);
+    $thumb = imagecreatetruecolor($new_width_100, $new_height_100);
+    $source = imagecreatefromjpeg($save_img_path);
 
-imagecopyresized($thumb, $source, 0, 0, 0, 0, $new_width_100, $new_height_100, $old_width, $old_height);
+    imagecopyresized($thumb, $source, 0, 0, 0, 0, $new_width_100, $new_height_100, $old_width, $old_height);
 
-echo '<pre>';
+    echo '<pre>';
 
 //imagejpeg($thumb);
-move_uploaded_file($save_img_path, "$uploaddir/$im");
+    move_uploaded_file($save_img_path, "$uploaddir/$im");
 //var_dump(move_uploaded_file($thumb, "$uploaddir/$im"));
 
 
 
 //var_dump(list($old_width,$old_height) = getimagesize($save_img_path););
 
+
+}
