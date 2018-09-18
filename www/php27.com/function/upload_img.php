@@ -9,23 +9,10 @@
 
 ini_set('display_errors', true);
 error_reporting(E_ALL);
-// Имя файла в временной папке
-$tmp_name = $_FILES['upload_avatart']['tmp_name'];
-// Берем тип файла (jpeg, png, gif)
-$file_name = pathinfo($_FILES['upload_avatart']['type']);
-// Берем разширение файла
-$get_type = $file_name['filename'];
-// Смотрим какую ошибку выдало при загрузке файла
-$errorCode = $_FILES['upload_avatart']['error'];
-
 // Путь куда сохранять картинки
 $uploaddir = './uploads/files';
 // Генерим имя файла
 $nowdate = date('Ymdhm');
-// Сохраням файл в паке с сгенерированым именем
-$new_file_name = $nowdate . '.' . $get_type;
-// Полный путь сохраненной картинки
-$save_img_path = "$uploaddir/$new_file_name";
 
 // Переменные для размеров картинок 600х200, 100х100, 200х200
 $new_width_100 = 100;
@@ -38,8 +25,22 @@ $new_width_600 = 600;
 $new_height_600 = 600;
 
 // Проверим на ошибки
-if ($_FILES['upload_avatart'])
+if (isset($_FILES['upload_avatart']))
 {
+// Имя файла в временной папке
+$tmp_name = $_FILES['upload_avatart']['tmp_name'];
+// Берем тип файла (jpeg, png, gif)
+$file_name = pathinfo($_FILES['upload_avatart']['type']);
+// Смотрим какую ошибку выдало при загрузке файла
+$errorCode = $_FILES['upload_avatart']['error'];
+// Берем разширение файла
+$get_type = $file_name['filename'];
+// Сохраням файл в паке с сгенерированым именем
+$new_file_name = $nowdate . '.' . $get_type;
+// Полный путь сохраненной картинки
+$save_img_path = "$uploaddir/$new_file_name";
+
+
     if ($errorCode !== UPLOAD_ERR_OK || !is_uploaded_file($tmp_name)) {
 
         // Массив с названиями ошибок
@@ -87,7 +88,7 @@ if (isset($tmp_name))
 finfo_close($finfo);
 
 // Проверим ключевое слово image (image/jpeg, image/png и т. д.)
-if ($_FILES['upload_avatart'])
+if (isset($_FILES['upload_avatart']))
 {
     if (strpos($mime, 'image') === false)
         die ('Это не изображение');
@@ -95,7 +96,7 @@ if ($_FILES['upload_avatart'])
 }
 
 // Переместим картинку с новым именем и расширением в папку /files
-if ($_FILES['upload_avatart'])
+if (isset($_FILES['upload_avatart']))
 {
     if (is_dir($uploaddir))
     {
@@ -103,7 +104,27 @@ if ($_FILES['upload_avatart'])
         {
             echo 'Файл успешно загружен на сервер.';
             chmod($save_img_path, 0777); // Назначаем права 777 на файл
-            //var_dump(getimagesize($save_img_path));
+
+// TEST
+            echo 'test';
+            $im = '111.jpg';
+            list($old_width,$old_height) = getimagesize($save_img_path);
+
+            $thumb = imagecreatetruecolor($new_width_100, $new_height_100);
+            $source = imagecreatefromjpeg($save_img_path);
+
+            imagecopyresized($thumb, $source, 0, 0, 0, 0, $new_width_100, $new_height_100, $old_width, $old_height);
+
+            echo '<pre>';
+
+            header("Content-Type: image/jpg");  //говорим что у нас гиф картинка
+
+            imagejpeg($thumb);
+            move_uploaded_file($thumb, "$uploaddir/$im");
+            var_dump ($thumb);
+
+// END TEST
+
         } else
         {
             echo 'Не удалось записать файл на диск.';
@@ -125,8 +146,9 @@ if ($_FILES['upload_avatart'])
 }
 
 //Изменяем размер картинки
-if ($_POST['upload_avatart'])
+/*if ($_POST['upload_avatart'])
 {
+    echo 'test';
     $im = '111.jpg';
     list($old_width,$old_height) = getimagesize($save_img_path);
 
@@ -135,15 +157,15 @@ if ($_POST['upload_avatart'])
 
     imagecopyresized($thumb, $source, 0, 0, 0, 0, $new_width_100, $new_height_100, $old_width, $old_height);
 
-    echo '<pre>';
+    echo '<pre> s';
 
 //imagejpeg($thumb);
     move_uploaded_file($save_img_path, "$uploaddir/$im");
-//var_dump(move_uploaded_file($thumb, "$uploaddir/$im"));
+var_dump ($thumb);
 
 
 
 //var_dump(list($old_width,$old_height) = getimagesize($save_img_path););
 
 
-}
+}*/
