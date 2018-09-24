@@ -3,6 +3,16 @@
 require_once 'work_sesion.php';
 require_once 'main_path.php';
 // Подклчюение к базе данных
+ini_set('display_errors', true);
+error_reporting(E_ALL);
+
+define('APP_PATH',__DIR__.DIRECTORY_SEPARATOR);
+define('FILE_CONFIG',APP_PATH.'function\upload_img.php');
+
+$uploaddir = './uploads/files';
+$nowdate = date('Ymdhm');
+
+
 $host = 'mysql';
 $database = 'php27';
 $user = 'root';

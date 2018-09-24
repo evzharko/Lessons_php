@@ -6,15 +6,10 @@
  * Если папки нет создаем ее. Файл называем датой и временем его загрузки.
  *
  * */
-
-ini_set('display_errors', true);
-error_reporting(E_ALL);
-// Путь куда сохранять картинки
-$uploaddir = './uploads/files';
-// Генерим имя файла
-$nowdate = date('Ymdhm');
-
-// Переменные для размеров картинок 600х200, 100х100, 200х200
+require_once '/config.config.php';
+//require_once '$_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.config/config.php';
+//var_dump( $_SERVER);
+var_dump($_SERVER['DOCUMENT_ROOT']);
 
 // Проверим на ошибки
 if (isset($_FILES['upload_avatart']))
