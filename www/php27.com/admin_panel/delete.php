@@ -8,7 +8,9 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 
-$query_delete = 'DELETE FROM users WHERE id =' . $_GET['id'];
+$id = $_GET['id'];
+
+$query_delete = 'DELETE FROM users WHERE id =' . $id;
 
 $res = mysqli_query($mysqli, $query_delete);
 
