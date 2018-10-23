@@ -1,29 +1,42 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: student
+ * Date: 13.10.2018
+ * Time: 11:22
+ */
+require_once './config/config.php';
 
-require_once "function/add_cart.php";
-//echo $_SESSION['login'];
+if (isset($_POST['save'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+    $save = $_POST['save'];
+
+//var_dump(date('Y-m-d H:i:s'));
+
+    $query = 'INSERT INTO php27.users (name, email, phone, password, create_date, update_data)'
+        . 'VALUES (' . "'" . $name . "'" . ','
+        . "'" . $email . "'" . ','
+        . "'" . $phone . "'" . ','
+        . "'" . $password . "'" . ','
+        . 'NOW()' . ','
+        . 'NOW())';
+
+    $res = mysqli_query($mysqli, $query);
+}
+
+var_dump(mysqli_error($mysqli));
 
 ?>
 
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Auth Users</title>
-    <link href="css/style_admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-</head>
-
-<body>
-
-<div class="login">
-    <h1>Auth Users</h1>
-    <form method="POST" action="cart.php">
-        <input type="text" name="login" placeholder="example" required="required"/>
-        <input type="password" name="password" placeholder="password" required="required"/>
-        <button type="submit" name="login_but" class="btn btn-primary btn-block btn-large">Login</button>
-    </form>
-</div>
-
-</body>
+<form action="auth.php" method="post">
+    <p><input name="name" placeholder="Имя"></p>
+    <p><input type="email" name="email" placeholder="email"></p>
+    <p><input name="phone" placeholder="Телефон"></p>
+    <p><input type="password" name="password" placeholder="password"></p>
+    <p><input type="submit" name="save" value="Save"></p>
+</form>
 </html>

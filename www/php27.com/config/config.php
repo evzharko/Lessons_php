@@ -1,55 +1,18 @@
 <?php
-/* В этом файле производим подключение к базе данных*/
-require_once 'work_sesion.php';
-require_once 'main_path.php';
-// Подклчюение к базе данных
-ini_set('display_errors', true);
-error_reporting(E_ALL);
+/**
+ * Created by PhpStorm.
+ * User: student
+ * Date: 13.10.2018
+ * Time: 10:31
+ */
 
-define('APP_PATH',__DIR__.DIRECTORY_SEPARATOR);
-define('FILE_CONFIG',APP_PATH.'function\upload_img.php');
+require $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'connectdb.php';
+//define("update",$_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'admin_panel' . DIRECTORY_SEPARATOR . 'update.php'); - не посню как
+// писать правильно ч еременной для константы
 
-$uploaddir = './uploads/files';
-$nowdate = date('Ymdhm');
+$res = mysqli_query($mysqli, "SELECT * FROM users");
 
-
-$host = 'mysql';
-$database = 'php27';
-$user = 'root';
-$password = 'password';
-
-try {
-    $db27 = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $password);
-    $db27->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $pdoe) {
-    echo $pdoe->getMessage();
-}
+// all products
+$row_all_assoc = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
 
-$sql = "SELECT * FROM products";
-
-$stmt = $db27->query($sql);
-$stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-
-/*Вывод айдишки товара */
-$id = "SELECT id FROM products";
-
-$id = $db27->query($id);
-$id->setFetchMode(PDO::FETCH_ASSOC);
-
-/*function query()
-{
-
-    $sql = "Select * from products";
-
-    $stmt = $db27->query($sql);
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-    return $stmt;
-    var_dump($stmt);
-}*/
-
-
-//echo connect();
-//echo query('Select * from products');
