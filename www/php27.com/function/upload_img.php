@@ -6,10 +6,8 @@
  * Если папки нет создаем ее. Файл называем датой и временем его загрузки.
  *
  * */
-require_once '/config.config.php';
-//require_once '$_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.config/config.php';
-//var_dump( $_SERVER);
-var_dump($_SERVER['DOCUMENT_ROOT']);
+//require_once '/config.config.php';
+require_once $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config/config.php';
 
 // Проверим на ошибки
 if (isset($_FILES['upload_avatart']))
@@ -26,7 +24,7 @@ $get_type = $file_name['filename'];
 $new_file_name = $nowdate . '.' . $get_type;
 // Полный путь сохраненной картинки
 $save_img_path = "$uploaddir/$new_file_name";
-
+imagecopyresized();
 
     if ($errorCode !== UPLOAD_ERR_OK || !is_uploaded_file($tmp_name)) {
 
@@ -102,7 +100,7 @@ function move_file ($tmp_name, $uploaddir)
     {
         echo 'Файл успешно загружен на сервер.';
         chmod($uploaddir, 0777); // Назначаем права 777 на файл
-        uploadResizeImages(600,200);
+        uploadResizeImages(100,100);
 
     } else
     {
@@ -125,15 +123,15 @@ function uploadResizeImages ($width,$height)
     $new_file_name = $nowdate . '.' . $get_type;
     $save_img_path = "$uploaddir/$new_file_name";
 
-    if ($width=100)
+    if ($width==100)
     {
         $new_file_name_thum = "$uploaddir/thum_100_$new_file_name"; // Задаем путь и новое имя для изображения
     }
-    if ($width=200)
+    if ($width==200)
     {
         $new_file_name_thum = "$uploaddir/thum_200_$new_file_name"; // Задаем путь и новое имя для изображения
     }
-    if ($width=600)
+    if ($width==600)
     {
         $new_file_name_thum = "$uploaddir/thum_600_$new_file_name"; // Задаем путь и новое имя для изображения
     }
