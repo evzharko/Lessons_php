@@ -18,8 +18,9 @@ class Database
         self::connect();
     }
 
+
     /**
-     * @return mysqli
+     * @return mixed
      */
     public function connect()
     {
@@ -27,13 +28,17 @@ class Database
             return self::$link;
         }
         self::$link = mysqli_connect("mysql", "root", "password", "php27");
-        return self::$link;
+       // return self::$link;
     }
 }
 
 class Qb extends Database
 {
 
+    /**
+     * @param $sql
+     * @return array|null
+     */
     public function select($sql)
     {
         $res = mysqli_query($this->connect(), $sql);
