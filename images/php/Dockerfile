@@ -21,9 +21,15 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install imagick \
     && docker-php-ext-enable imagick
+
+RUN yes | pecl install xdebug \
+        && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+        && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+        && echo "xdebug.remote_host=192.168.10.104 " >> /usr/local/etc/php/conf.d/xdebug.ini \
+        && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/xdebug.ini
     
 # Куда же без composer'а.
- RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Добавим свой php.ini, можем в нем определять свои значения конфига
 ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
