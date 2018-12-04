@@ -11,4 +11,4 @@ docker run --rm --interactive --tty -v $PWD:/app -u $(id -u):$(id -g) composer i
 docker run --rm -v $PWD:/var/www -u $(id -u):$(id -g) lessonsphp_php php artisan make:auth
 
 #Если ругаеться на папаку с логами
-sudo sudo chmod -R o+w www/php27.com/storage/
+sudo chmod -R o+w www/php27.com/storage/
