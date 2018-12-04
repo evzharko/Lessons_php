@@ -12,3 +12,6 @@ docker run --rm -v $PWD:/var/www -u $(id -u):$(id -g) lessonsphp_php php artisan
 
 #Если ругаеться на папаку с логами
 sudo chmod -R o+w www/php27.com/storage/
+
+#Генерация ключа для файла с окружением
+docker run --rm -v $PWD:/var/www -u $(id -u):$(id -g) lessonsphp_php php artisan key:generate
