@@ -27,7 +27,7 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('products.add');
+        return view('products.create');
     }
 
     public function update(Request $request, $id)
