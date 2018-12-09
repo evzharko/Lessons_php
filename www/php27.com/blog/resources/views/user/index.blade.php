@@ -25,8 +25,9 @@
                                     <td> {{$user->updated_at}}</td>
                                     <td><a href="{{route('user.edit',['user'=>$user->id])}}">edit</a></td>
                                     <td>
-                                        <form action="{{route('user.destroy',['user'=>$user->id])}}">
+                                        <form method="POST" action="{{route('user.destroy',['user'=>$user->id])}}">
                                             {{csrf_field()}}
+                                            {!! method_field('delete') !!}
                                             <input type="submit" value="delete"/>
                                         </form>
                                     </td>

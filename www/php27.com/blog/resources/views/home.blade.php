@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <a href="{{ route('products') }}">Список товаров</a>
                 </div>
             </div>
         </div>
