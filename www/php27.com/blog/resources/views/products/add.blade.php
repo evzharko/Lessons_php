@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                            <form method="POST" action="{{route('products')}}">
+                            <form method="post" action="{{route('products_add')}}">
                                 Названия товара <input type="text" style="width: 300px"/>
                                 <br/>
                                 <br/>
