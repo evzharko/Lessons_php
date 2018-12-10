@@ -14,16 +14,15 @@
                             </div>
                         @endif
 
-                            <form method="post" action="{{route('products_add')}}">
-                                Названия товара <input type="text" style="width: 300px"/>
-                                <br/>
-                                <br/>
-                                Описание товара <input type="text" style="width: 300px"/>
-                                <br/>
-                                <br/>
-                                <input type="submit" value="Save">
-                            </form>
-
+                        <form action="" method="POST">
+                            Названия товара <input type="text" name="name" style="width: 300px"/>
+                            <br/>
+                            <br/>
+                            Описание товара <input type="text" name="description" style="width: 300px"/>
+                            <br/>
+                            <br/>
+                            <input type="submit" value="Save">
+                        </form>
 
                     </div>
                 </div>

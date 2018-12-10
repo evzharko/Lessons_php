@@ -9,7 +9,7 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = DB::table('products')->select('id','name','description','img','price')->paginate(2);
+        $products = DB::table('products')->select('id', 'name', 'description', 'img', 'price')->paginate(2);
         return view('products.index', ['products' => $products]);
     }
 
@@ -25,8 +25,12 @@ class ProductsController extends Controller
 //        return view('user.edit', ['user' => $user]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
+//        dd($request);
+        $this->validate($request, [
+            'name' => 'require'
+        ]);
         return view('products.create');
     }
 

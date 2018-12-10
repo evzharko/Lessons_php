@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Добавиление товара
                     <br>
-                        <a href="{{ route('products_add') }}">Добавить товары</a>
+                        <a href="{{ route('products.add') }}">Добавить товары</a>
                     </div>
 
                     <div class="panel-body">
