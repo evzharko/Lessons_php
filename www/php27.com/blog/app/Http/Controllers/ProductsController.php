@@ -25,12 +25,14 @@ class ProductsController extends Controller
 //        return view('user.edit', ['user' => $user]);
     }
 
-    public function create(Request $request)
+    public function create()
     {
-//        dd($request);
-        $this->validate($request, [
-            'name' => 'require'
-        ]);
+        return view('products.create');
+    }
+    public function PostCreate(Request $request)
+    {
+        $products = new \ProductsController();
+        dd($products);
         return view('products.create');
     }
 
