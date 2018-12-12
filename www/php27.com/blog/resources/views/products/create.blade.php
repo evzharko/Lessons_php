@@ -16,10 +16,10 @@
 
                         <form action="" method="POST">
                             {{ csrf_field() }}
-                            Названия товара <input type="text" name="name" style="width: 300px"/>
+                            Названия товара <input type="text" name="ProductName" style="width: 300px"/>
                             <br/>
                             <br/>
-                            Описание товара <input type="text" name="description" style="width: 300px"/>
+                            Описание товара <input type="text" name="ProductDescription" style="width: 300px"/>
                             <br/>
                             <br/>
                             <input type="submit" value="Save">

@@ -29,10 +29,14 @@ class ProductsController extends Controller
     {
         return view('products.create');
     }
+
     public function PostCreate(Request $request)
     {
-        $products = new \ProductsController();
-        dd($products);
+        $ProductName = $request->post('ProductName');
+        $ProductDescription = $request->post('ProductDescription');
+
+        $prod = DB::table('products')->se
+
         return view('products.create');
     }
 
