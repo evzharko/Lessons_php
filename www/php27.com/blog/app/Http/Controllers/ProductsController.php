@@ -25,7 +25,7 @@ class ProductsController extends Controller
 //        return view('user.edit', ['user' => $user]);
     }
 
-    public function create()
+    public function add()
     {
         return view('products.create');
     }
