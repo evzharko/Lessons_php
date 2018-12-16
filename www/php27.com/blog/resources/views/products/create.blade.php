@@ -22,6 +22,12 @@
                             Описание товара <input type="text" name="ProductDescription" style="width: 300px"/>
                             <br/>
                             <br/>
+                            Цена <input type="text" name="ProductPrice" style="width: 300px"/>
+                            <br/>
+                            <br/>
+                            Картинка <input type="text" name="ProductImg" style="width: 300px"/>
+                            <br/>
+                            <br/>
                             <input type="submit" value="Save">
                         </form>
 

@@ -18,9 +18,9 @@ class Products extends Migration
             $table->char('name');
             $table->text('description');
             $table->text('img');
-            $table->integer('category_id');
+            $table->integer('category_id')->nullable($value = true);
             $table->dateTime('created_data');
-            $table->dateTime('updated_data');
+            $table->dateTime('updated_data')->nullable($value = true);
             $table->double('price');
             $table->rememberToken();
             $table->timestamps();

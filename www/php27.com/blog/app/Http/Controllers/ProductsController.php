@@ -34,8 +34,10 @@ class ProductsController extends Controller
     {
         $ProductName = $request->post('ProductName');
         $ProductDescription = $request->post('ProductDescription');
+        $ProductPrice = $request->post('ProductPrice');
+        $ProductImg = $request->post('ProductImg');
 
-        $data = ['name' => $ProductName, 'description' => $ProductDescription, 'created_data' => NOW(), 'price' => 1];
+        $data = ['name' => $ProductName, 'description' => $ProductDescription, 'created_data' => NOW(), 'price' => $ProductPrice, 'img' => $ProductImg];
 
         DB::table('products')->insert($data);
         return view('products.create');

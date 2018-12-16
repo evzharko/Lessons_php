@@ -24,9 +24,3 @@ Route::get('/products/create', 'ProductsController@create')->name('products.add'
 Route::post('/products/create', 'ProductsController@PostCreate')->name('products.add');
 
 Route::resource('user', 'UserController');
-
-
-Route::post('foo/bar', function (Request $request)
-{
-    return 'Hello World';
-});
