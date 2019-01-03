@@ -22,6 +22,9 @@
                             Описание товара <input type="text" name="ProductDescription" style="width: 300px"/>
                             <br/>
                             <br/>
+                            Брэнд товара <input type="text" name="ProductBrand" style="width: 300px"/>
+                            <br/>
+                            <br/>
                             Цена <input type="text" name="ProductPrice" style="width: 300px"/>
                             <br/>
                             <br/>
