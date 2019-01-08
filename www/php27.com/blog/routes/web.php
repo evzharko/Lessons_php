@@ -19,9 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/products', 'ProductsController@index')->name('products');
-Route::get('/products/create', 'ProductsController@add')->name('products.add');
-Route::post('/products/create', 'ProductsController@PostCreate')->name('products.add');
+Route::get('/products', 'Products\ProductsController@index')->name('products');
+Route::get('/products/create', 'Products\ProductsController@add')->name('products.add');
+Route::post('/products/create', 'Products\ProductsController@PostCreate')->name('products.add');
 Route::get('/shop', 'ShopController@index')->name('shop.view');
 
-Route::resource('user', 'UserController');
+
+Route::middleware(['admin'])
+    ->prefix('admin')
+    ->group(function (){
+        Route::resource('user', 'UserController');
+});

@@ -33,4 +33,9 @@ class User extends Authenticatable
     {
         return $this->name . ' ' . $this->password;
     }
+
+    public function isAdmin()
+    {
+        return true;
+    }
 }
