@@ -17,6 +17,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
+
         /** @var User $user */
         $user = \Auth::user();
         if ($user->isAdmin())

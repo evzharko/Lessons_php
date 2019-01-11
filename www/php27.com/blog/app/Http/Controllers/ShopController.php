@@ -12,4 +12,7 @@ class ShopController extends Controller
         $products = DB::table('products')->select('id', 'name', 'description', 'img', 'price')->paginate(5);
         return view('shop.index', ['products' => $products]);
     }
+    public function showmenproducts() {
+        return view ('shop.shop-grid');
+    }
 }
