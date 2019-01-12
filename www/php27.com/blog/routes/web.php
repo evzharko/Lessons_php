@@ -11,19 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'ShopController@index')->name('shop.view');
 
 Route::get('/products', 'Products\ProductsController@index')->name('products');
 Route::get('/products/create', 'Products\ProductsController@add')->name('products.add');
 Route::post('/products/create', 'Products\ProductsController@PostCreate')->name('products.add');
-Route::get('/shop', 'ShopController@index')->name('shop.view');
-Route::get('/shop/shop-grid', 'ShopController@showmenproducts')->name('shop.view');
+//Route::get('/shop', 'ShopController@index')->name('shop.view');
+//Route::get('/shop/shop-grid', 'ShopController@showmenproducts')->name('shop.view');
 
 
 Route::middleware(['admin'])
