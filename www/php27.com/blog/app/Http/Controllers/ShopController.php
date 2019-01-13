@@ -14,11 +14,11 @@ class ShopController extends Controller
     public function index()
     {
         $products = DB::table('products')->select('id', 'name', 'description', 'img', 'slug', 'price')->paginate(5);
-        $products_women = Product::where('category_id', '=', 2);
+        $products_womens = Product::where('category_id', '=', 2);
 //        dd($products_women);
         return view('shop.index', [
             'products' => $products,
-            'products_women' => $products_women
+            'products_womens' => $products_womens
         ]);
     }
 
