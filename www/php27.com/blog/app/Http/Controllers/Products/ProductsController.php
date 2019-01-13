@@ -33,13 +33,15 @@ class ProductsController extends Controller
 
     public function PostCreate(Request $request)
     {
+        $ProductSlug = $request->post('ProductSlug');
         $ProductName = $request->post('ProductName');
         $ProductDescription = $request->post('ProductDescription');
         $ProductBrand = $request->post('ProductBrand');
+        $ProductCategory = $request->post('ProductCategory');
         $ProductPrice = $request->post('ProductPrice');
         $ProductImg = $request->post('ProductImg');
 
-        $data = ['name' => $ProductName, 'description' => $ProductDescription, 'brand' => $ProductBrand, 'created_data' => NOW(), 'price' => $ProductPrice, 'img' => $ProductImg];
+        $data = ['slug' => $ProductSlug, 'name' => $ProductName, 'description' => $ProductDescription, 'brand' => $ProductBrand, 'created_data' => NOW(), 'category_id' => $ProductCategory, 'price' => $ProductPrice, 'img' => $ProductImg];
 
         DB::table('products')->insert($data);
         return view('products.create');

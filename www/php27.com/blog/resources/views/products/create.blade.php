@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')--}}
 
 @section('content')
     <div class="container">
@@ -16,6 +16,9 @@
 
                         <form action="" method="POST">
                             {{ csrf_field() }}
+                            Ссылка на товар <input type="text" name="ProductSlug" style="width: 300px"/>
+                            <br/>
+                            <br/>
                             Названия товара <input type="text" name="ProductName" style="width: 300px"/>
                             <br/>
                             <br/>
@@ -23,6 +26,9 @@
                             <br/>
                             <br/>
                             Брэнд товара <input type="text" name="ProductBrand" style="width: 300px"/>
+                            <br/>
+                            <br/>
+                            Категория товара <input type="text" name="ProductCategory" style="width: 300px"/>
                             <br/>
                             <br/>
                             Цена <input type="text" name="ProductPrice" style="width: 300px"/>
@@ -40,4 +46,4 @@
         </div>
 
     </div>
-@endsection
+@show
