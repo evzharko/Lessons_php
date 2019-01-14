@@ -21,7 +21,7 @@ class UserController extends Controller
             ->where('name','like','%'.$name.'%')
             ->paginate(2); // Все строки
         $users->appends(['name'=>$name]);
-        return view('user.index', ['users' => $users]);
+        return view('admin.user.index', ['users' => $users]);
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        return view('user.edit'); // Возвращаемся на редактирование
+        return view('admin.user.edit'); // Возвращаемся на редактирование
     }
 
     /**
@@ -54,7 +54,7 @@ class UserController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->save();
-        return redirect(route('user.edit', ['user' => $user->id]))->with(['status'=>'Новый пользователь создан']);
+        return redirect(route('admin.user.edit', ['user' => $user->id]))->with(['status'=>'Новый пользователь создан']);
     }
 
     /**
@@ -67,7 +67,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('user.show', ['user' => $user]);
+        return view('admin.user.show', ['user' => $user]);
     }
 
     /**
@@ -80,7 +80,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('user.edit', ['user' => $user]);
+        return view('admin.user.edit', ['user' => $user]);
     }
 
     /**
@@ -97,7 +97,7 @@ class UserController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->save();
-        return redirect(route('user.edit', ['user' => $id]));
+        return redirect(route('admin.user.edit', ['user' => $id]));
     }
 
     /**
@@ -110,7 +110,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect(route('user.index'));
+        return redirect(route('admin.user.index'));
 
     }
 }
