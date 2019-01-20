@@ -10,8 +10,8 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = DB::table('products')->select('id', 'name', 'description', 'img', 'price')->paginate(5);
-        return view('products.index', ['products' => $products]);
+        $products = DB::table('products')->select('id', 'name', 'description', 'img', 'price')->paginate(10);
+        return view('admin.products.index', ['products' => $products]);
     }
 
     public function show($id)
@@ -28,11 +28,12 @@ class ProductsController extends Controller
 
     public function add()
     {
-        return view('products.create');
+        return view('admin.products.create');
     }
 
     public function PostCreate(Request $request)
     {
+//        dd($request);
         $ProductSlug = $request->post('ProductSlug');
         $ProductName = $request->post('ProductName');
         $ProductDescription = $request->post('ProductDescription');
@@ -44,7 +45,7 @@ class ProductsController extends Controller
         $data = ['slug' => $ProductSlug, 'name' => $ProductName, 'description' => $ProductDescription, 'brand' => $ProductBrand, 'created_data' => NOW(), 'category_id' => $ProductCategory, 'price' => $ProductPrice, 'img' => $ProductImg];
 
         DB::table('products')->insert($data);
-        return view('products.create');
+        return view('admin.products.create');
     }
 
     public function update(Request $request, $id)

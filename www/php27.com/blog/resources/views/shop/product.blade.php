@@ -154,7 +154,7 @@
 
                                 <div class="tab-content">
                                     <div id="tab1" class="tab-pane active">
-                                        <p>{{$product_slug->description }}</p>
+                                        <p>{!! $product_slug->description !!}</p>
                                     </div>
                                     <div id="tab2" class="tab-pane">
 
