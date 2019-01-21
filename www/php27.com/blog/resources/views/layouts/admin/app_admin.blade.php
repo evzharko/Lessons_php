@@ -86,6 +86,10 @@
 @endsection()
 @yield('create_products')
 
+@section('edit_products')
+@endsection()
+@yield('edit_products')
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

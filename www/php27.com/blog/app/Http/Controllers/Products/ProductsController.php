@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,9 +22,9 @@ class ProductsController extends Controller
 
     public function edit($id)
     {
-//      $user = User::find($id);
-//
-//        return view('user.edit', ['user' => $user]);
+        $product = Product::find($id);
+//dd($product);
+        return view('admin.products.edit', ['product' => $product]);
     }
 
     public function add()
@@ -51,11 +52,17 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
 
-//        $user = User::find($id);
-//        $user->name = $request->get('name');
-//        $user->email = $request->get('email');
-//        $user->save();
-//        return redirect(route('user.edit', ['user' => $id]));
+        $product = Product::find($id);
+        $product->slug = $request->get('ProductSlug');
+        $product->name = $request->get('ProductName');
+        $product->description = $request->get('ProductDescription');
+        $product->brand = $request->get('ProductBrand');
+        $product->category_id = $request->get('ProductCategory');
+        $product->price = $request->get('ProductPrice');
+        $product->img = $request->get('ProductImg');
+//        dd($product->save());
+        $product->save();
+        return redirect(route('products.edit', ['product' => $product]));
     }
 
     public function destory()

@@ -27,7 +27,7 @@
                 <td>{!!$product->description!!}</td>
                 <td>{{$product->img}}</td>
                 <td>{{$product->price}}</td>
-                <td><a href="">edit</a></td>
+                <td><a href="{{route('products.edit',[$product->id])}}">edit</a></td>
             </tr>
             @endforeach
             </tbody>

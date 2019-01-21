@@ -27,6 +27,8 @@ Route::middleware(['admin'])
         Route::resource('user', 'UserController');
         Route::get('/products', 'Products\ProductsController@index')->name('products');
         Route::get('/products/create', 'Products\ProductsController@add')->name('products.add');
+        Route::get('/products/{productid}/edit', 'Products\ProductsController@edit')->name('products.edit');
+        Route::post('/products/{productid}/update', 'Products\ProductsController@update')->name('products.update');
         Route::post('/products/create', 'Products\ProductsController@PostCreate')->name('products.add');
 });
 
