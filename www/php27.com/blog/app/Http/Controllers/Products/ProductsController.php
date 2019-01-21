@@ -53,6 +53,7 @@ class ProductsController extends Controller
     {
 
         $product = Product::find($id);
+        dd(Product::find($id));
         $product->slug = $request->get('ProductSlug');
         $product->name = $request->get('ProductName');
         $product->description = $request->get('ProductDescription');
@@ -60,7 +61,6 @@ class ProductsController extends Controller
         $product->category_id = $request->get('ProductCategory');
         $product->price = $request->get('ProductPrice');
         $product->img = $request->get('ProductImg');
-//        dd($product->save());
         $product->save();
         return redirect(route('products.edit', ['product' => $product]));
     }
