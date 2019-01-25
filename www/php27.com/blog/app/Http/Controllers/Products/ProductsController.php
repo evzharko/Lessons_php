@@ -53,7 +53,7 @@ class ProductsController extends Controller
     {
 
         $product = Product::find($id);
-        dd(Product::find($id));
+//        dd(Product::find($id));
         $product->slug = $request->get('ProductSlug');
         $product->name = $request->get('ProductName');
         $product->description = $request->get('ProductDescription');

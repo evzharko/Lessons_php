@@ -30,5 +30,8 @@ Route::middleware(['admin'])
         Route::get('/products/{productid}/edit', 'Products\ProductsController@edit')->name('products.edit');
         Route::post('/products/{productid}/update', 'Products\ProductsController@update')->name('products.update');
         Route::post('/products/create', 'Products\ProductsController@PostCreate')->name('products.add');
+        Route::get('/products/manufacturers', 'Products\ManufactureController@index')->name('manufacturers');
+        Route::post('/products/manufacturers/create', 'Products\ManufactureController@PostCreate')->name('manufacturers.add');
+        Route::get('/products/manufacturers/create', 'Products\ManufactureController@add')->name('manufacturers.add');
 });
 

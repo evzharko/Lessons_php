@@ -36,7 +36,7 @@
                     <li class="active"><a href="{{ route('products') }}">Товары</a></li>
                     <li><a href="#">Фильтры</a></li>
                     <li><a href="#">Атрибуты</a></li>
-                    <li><a href="#">Производители</a></li>
+                    <li><a href="{{ route('manufacturers') }}">Производители</a></li>
                     <li><a href="#">Статьи</a></li>
                 </ul>
 
@@ -81,6 +81,13 @@
 @section('content_products')
 @endsection
 @yield('content_products')
+
+@section('content_manufacture')
+@endsection
+@yield('content_manufacture')
+@section('create_manufacture')
+@endsection
+@yield('create_manufacture')
 
 @section('create_products')
 @endsection()
