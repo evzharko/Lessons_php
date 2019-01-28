@@ -13,13 +13,9 @@ class ManufactureController extends Controller
     public function index()
     {
         /** @var Manufacturer $manufactures */
-//        $manufactures = Manufacturer::all()->sortBy('name');
-//        $manufactures = Manufacturer::paginate();
         $manufactures = Manufacturer::query()
             ->orderBy('name')
             ->paginate(5);
-
-//        $manufactures = Manufacturer::sortBy('name');
 
         return view('admin.manufacture.index', ['manufactures' => $manufactures]);
     }
