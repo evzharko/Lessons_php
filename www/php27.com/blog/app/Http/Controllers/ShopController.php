@@ -28,7 +28,7 @@ class ShopController extends Controller
     public function shorts()
     {
         $products = DB::table('products')->select('id', 'name', 'description', 'img', 'slug', 'price')->paginate(5);
-        return view('shop.short1s', ['products' => $products]);
+        return view('shop.shorts', ['products' => $products]);
     }
 
     /**
