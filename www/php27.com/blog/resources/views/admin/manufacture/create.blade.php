@@ -16,11 +16,16 @@
                     {{ session('status') }}
                 </div>
             @endif
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label type="text">Названия производителя</label>
                     <input name="ManufactureName" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label type="text">Загрузить изображение</label>
+                    <input type="file" name="ManufactureImg">
+                    {{--<input name="ManufactureImg" type="file" class="form-control">--}}
                 </div>
                 <button type="submit" class="btn btn-primary">Создать производителя</button>
             </form>
